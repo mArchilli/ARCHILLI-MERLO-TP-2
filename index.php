@@ -125,7 +125,7 @@ if (!array_key_exists($seccion, $secciones_validas)) {
                             <li><a class="dropdown-item" href="index.php?sec=catalogo_x_genero&gen=pop">Pop</a></li>
                             <li><a class="dropdown-item" href="index.php?sec=catalogo_x_genero&gen=rock">Rock</a></li>
                             <li><a class="dropdown-item" href="index.php?sec=catalogo_x_genero&gen=electrónica">Electrónica</a></li>
-                            <li><a class="dropdown-item" href="index.php?sec=catalogo_x_genero&gen=hip-hop">Hip-Hop</a></li>
+                            <li><a class="dropdown-item" href="index.php?sec=catalogo_x_genero&gen=rap">Rap</a></li>
                             <li><a class="dropdown-item" href="index.php?sec=catalogo_x_genero&gen=jazz">Jazz</a></li>
                         </ul>
                     </li>

@@ -189,7 +189,7 @@ class Disco {
         }
 
         // Luego, construye tu consulta SQL con la cláusula WHERE dinámica
-        $query = "SELECT * FROM Discos WHERE " . $where;
+        $query = "SELECT * FROM discos WHERE " . $where;
 
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
@@ -204,26 +204,35 @@ class Disco {
     }
 
     /**
-     * Devuelve el catalogo de los discos publicados en una epoca en particular
+     * Devuelve el catalogo de los discos publicados con un genero en particular
      * @param string $genero Un string con el nombre del genero seleccionado
      * @return Disco[] Un array de objetos Disco 
      */
     public function catalogo_por_genero(string $genero):array{
-        $catalogoXgenero = [];
-        $catalogo = $this->catalogoCompleto();
+        $conexion = (new Conexion())->getConexion();
+        $where = '';
 
-        foreach ($catalogo as $d) {
-        
-            foreach ($d->genero as $generos){
-
-                if ($genero == strtolower($generos)) { 
-
-                    $catalogoXgenero[] = $d;
-                }
-            }
-            
+        if ($genero == 'pop' || $genero ==  'rock' || $genero ==  'Jazz'){
+            $where = 'generos.nombre = ?';
+        } else {
+            echo "<pre>";
+            print_r("Genero no encontrada");
+            echo "</pre>";
         }
-        return $catalogoXgenero;
+
+        // Luego, construye tu consulta SQL con la cláusula WHERE dinámica
+        $query = "SELECT * FROM discos JOIN generos ON discos.id_genero = generos.id WHERE " . $where;
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute([$genero]);
+        $catalogo = $PDOStatement->fetchAll();
+
+        // echo "<pre>";
+        // print_r($catalogo);
+        // echo "</pre>";
+
+        return $catalogo;
     }
 
     /**
