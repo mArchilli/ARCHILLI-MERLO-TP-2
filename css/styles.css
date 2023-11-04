@@ -1,0 +1,123 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Roboto';
+    font-weight: 400;
+}
+body{
+    background-image: linear-gradient(-225deg, #69EACB 0%, #EACCF8 48%, #6654F1 100%);
+}
+
+.nav-color{
+    background-color: rgb(72 72 72 / 6%);
+    
+}
+
+.nav-show{
+    background-color: #dbd3dfcc;
+}
+
+h1{
+    font-family: 'Anton';
+}
+
+h2{
+    font-family: 'Anton';
+    letter-spacing: .1rem;
+}
+
+.footerDatos{
+    background-color: rgb(72 72 72 / 6%);
+}
+
+.footerDatos p{
+    font-weight: bold;
+}
+
+.footerDatos ul {
+    list-style: none;
+    padding: 0; 
+}
+
+
+em{
+    font-style: normal;
+}
+
+strong{
+    font-weight: normal;
+}
+
+h2>span{
+    color: #1d978c;
+    font-family: 'Anton';
+}
+
+.text-style {
+    font-weight: bold;
+    color: #605091;
+}
+
+.btn-style{
+    background-color: #705da9;
+    color: white;
+    border: none;
+}
+
+button span{
+    font-weight: bold;
+}
+
+.btn-style:hover{
+    background-color: #4b3d76;
+    color: white;
+}
+
+.parrafos>p{
+    font-size: 18px;
+}
+
+.parrafos span{
+    font-weight: bold;
+    color: #705da9;
+}
+
+.copy p{
+    font-style: italic;
+    font-weight: 400;
+    margin: 0px;
+}
+
+.error{
+    margin: 7.5rem;
+}
+
+.error h2{
+    font-size: 5rem;
+}
+
+.error p{
+    font-size: 1.5rem;
+    margin: 2rem;
+}
+
+.text-error{
+    font-family: 'Roboto';
+}
+
+
+ul li.list-group-item.perfil{
+    background-color:#ffffffcf;
+    font-weight: bold;
+}
+
+ul li.list-group-item.perfil span{
+    font-weight: 600;
+    color: #56506a;
+}
+
+.navbar{
+    box-shadow: 1px 6px 12px -2px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 1px 6px 12px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 6px 12px -2px rgba(0,0,0,0.75);
+}
