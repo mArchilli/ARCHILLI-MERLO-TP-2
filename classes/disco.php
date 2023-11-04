@@ -240,15 +240,21 @@ class Disco {
      * @param int $idDisco El ID del disco
      * @return Disco Un objeto Disco o null
      */
-    public function catalogo_por_id(int $idDisco):?Disco{
+    public function catalogo_por_id(int $idDisco): ?Disco{
         $catalogo = $this->catalogoCompleto();
+        $conexion = (new Conexion())->getConexion();
+        
+        $query = "SELECT * FROM discos WHERE discos.id = ?";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute([$idDisco]);
+        $catalogo = $PDOStatement->fetch();
 
-        foreach ($catalogo as $d) {
-            if ($d->id == $idDisco) {
-                return $d;
-            }
-        }
-        return null;
+        // echo "<pre>";
+        // print_r($catalogo);
+        // echo "</pre>";
+
+        return $catalogo ?? null;
     }
     #endregion
 }
