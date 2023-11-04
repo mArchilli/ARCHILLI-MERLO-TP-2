@@ -212,21 +212,18 @@ class Disco {
         $conexion = (new Conexion())->getConexion();
         $where = '';
 
-        if ($genero == 'pop' || $genero ==  'rock' || $genero ==  'Jazz'){
-            $where = 'generos.nombre = ?';
-        } else {
-            echo "<pre>";
-            print_r("Genero no encontrada");
-            echo "</pre>";
+        $generos = (new Genero())->listar_generosPrincipales();
+        $catalogo = [];
+        
+        foreach($generos as $generoBD) {
+            if ($genero == strtolower($generoBD['nombre'])){
+                $query = "SELECT * FROM discos JOIN generos ON discos.id_genero = generos.id WHERE generos.nombre = ?";
+                $PDOStatement = $conexion->prepare($query);
+                $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+                $PDOStatement->execute([$genero]);
+                $catalogo = $PDOStatement->fetchAll();
+            }
         }
-
-        // Luego, construye tu consulta SQL con la cláusula WHERE dinámica
-        $query = "SELECT * FROM discos JOIN generos ON discos.id_genero = generos.id WHERE " . $where;
-
-        $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
-        $PDOStatement->execute([$genero]);
-        $catalogo = $PDOStatement->fetchAll();
 
         // echo "<pre>";
         // print_r($catalogo);
