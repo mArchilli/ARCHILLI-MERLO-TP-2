@@ -74,5 +74,23 @@ class Artista{
 
         return $artista;
     }
+
+    /**
+     * Devuelve el listado completo de artistas
+     */
+    public function listado_artistas(): array{
+        $conexion = (new Conexion())->getConexion();
+        $query = "SELECT * FROM artistas";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute();
+        $artistas = $PDOStatement->fetchAll();
+
+        //  echo "<pre>";
+        //  print_r($artistas);
+        //  echo "</pre>";
+
+        return $artistas;
+    }
     #endregion
 }

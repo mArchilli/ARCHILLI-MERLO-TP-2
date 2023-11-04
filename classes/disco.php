@@ -253,5 +253,33 @@ class Disco {
 
         return $catalogo ?? null;
     }
+
+    /**
+     * Devuelve el catalogo de los discos por intervalos de precios
+     * @param int $minimo Un int que trae el precio minimo
+     * @param int $maximo Un int que trae el precio maximo
+     * @return Disco[] Un array de objetos Disco 
+     */
+    public function catalogo_por_precio(int $minimo = 0, int $maximo = 0):array{
+
+        $conexion = (new Conexion())->getConexion();
+
+        if($maximo){
+            $query = "SELECT * FROM discos WHERE precio BETWEEN :minimo AND :maximo";
+        } else {
+            $query = "SELECT * FROM discos WHEN precio > :minimo";
+        }
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute(['minimo'=> $minimo,'maximo'=> $maximo]);
+        $catalogo = $PDOStatement->fetchAll();
+
+        // echo "<pre>";
+        // print_r($catalogo);
+        // echo "</pre>";
+
+        return $catalogo;
+    }
     #endregion
 }
