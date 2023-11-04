@@ -1,43 +1,40 @@
 <?PHP
+
+
 class Disco {
+
     private $id;
-    private $epoca;
-    private $disco;
-    private $artista;
-    private $publicacion;
-    private $genero;
+    private $titulo;
+    private $id_artista;
+    private $id_genero;
+    private $descripcion;
     private $sello;
     private $portada;
+    private $publicacion;
     private $precio;
-    private $descripcion;
+    private $disco;
+    private $fecha_carga;
+    private $genero;
+    private $artista;
+
 
     /**
      * Devuelve el catalogo de discos completo
      * @return array Un array de objetos Disco
      */
     public function catalogoCompleto():array{
-        $catalogo = [];
 
-        $JSON = file_get_contents('datos/productos.json');
-        $JSONData = json_decode($JSON);
+        $conexion = (new Conexion())->getConexion();
+        $query = "SELECT * FROM discos";
 
-        foreach ($JSONData as $value) {
-            
-            $disco = new Self();
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute();
+        $catalogo = $PDOStatement->fetchAll();
 
-            $disco->id = $value->id;
-            $disco->epoca = $value->epoca;
-            $disco->disco = $value->disco;
-            $disco->artista = $value->artista;
-            $disco->publicacion = $value->publicacion;
-            $disco->genero = $value->genero;
-            $disco->sello = $value->sello;
-            $disco->portada = $value->portada;
-            $disco->precio = $value->precio;
-            $disco->descripcion = $value->descripcion;
-
-            $catalogo[] = $disco;
-        }
+        //  echo "<pre>";
+        //  print_r($catalogo);
+        //  echo "</pre>";
 
         return $catalogo;
     }
@@ -115,43 +112,11 @@ class Disco {
     }
 
     /**
-     * Get the value of epoca
-     */
-    public function getEpoca()
-    {
-        return $this->epoca;
-    }
-
-    /**
-     * Get the value of disco
-     */
-    public function getDisco()
-    {
-        return $this->disco;
-    }
-
-    /**
-     * Get the value of artista
-     */
-    public function getArtista()
-    {
-        return $this->artista;
-    }
-
-    /**
      * Get the value of publicacion
      */
     public function getPublicacion()
     {
         return $this->publicacion;
-    }
-
-    /**
-     * Get the value of genero
-     */
-    public function getGenero()
-    {
-        return $this->genero;
     }
 
     /**
@@ -187,4 +152,60 @@ class Disco {
     }
 
 
+
+    /**
+     * Get the value of titulo
+     */ 
+    public function getTitulo()
+    {
+        return $this->titulo;
+    }
+
+    /**
+     * Get the value of id_artista
+     */ 
+    public function getId_artista()
+    {
+        return $this->id_artista;
+    }
+
+    /**
+     * Get the value of id_genero
+     */ 
+    public function getId_genero()
+    {
+        return $this->id_genero;
+    }
+
+    /**
+     * Get the value of disco
+     */ 
+    public function getDisco()
+    {
+        return $this->disco;
+    }
+
+    /**
+     * Get the value of fecha_carga
+     */ 
+    public function getFecha_carga()
+    {
+        return $this->fecha_carga;
+    }
+
+    /**
+     * Get the value of genero
+     */ 
+    public function getGenero()
+    {
+        return "Genero no encontrado";
+    }
+
+    /**
+     * Get the value of artista
+     */ 
+    public function getArtista()
+    {
+        return "Artista no encontrado";
+    }
 }

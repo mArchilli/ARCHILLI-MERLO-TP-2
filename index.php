@@ -1,4 +1,5 @@
 <?PHP
+require_once 'classes/Conexion.php';
 require_once 'classes/Disco.php';
 
 // Array asociativo de secciones validas
@@ -39,7 +40,7 @@ $seccion = isset($_GET['sec']) ? $_GET['sec'] : 'inicio';
 if (!array_key_exists($seccion, $secciones_validas)) {
     // Si no existe
     $vista = "404";
-    $titulo = "404: Página no encontradaA";
+    $titulo = "404: Página no encontrada";
 } else {
     // Si existe
     $vista = $seccion;
@@ -162,8 +163,21 @@ if (!array_key_exists($seccion, $secciones_validas)) {
             <!--Grid column-->
             <div class="col-12 col-md-5 py-lg-2">
                 <ul class="list-group">
-                    <li class="list-group-item perfil"><span class="text-uppercase">Archilli Matias</span></li>
-                    <li class="list-group-item"><img src="img/perfil-archilli.png" class="img-fluid" alt="Alumno Archilli Matias"></li>
+                    
+                    <li class="list-group-item" >
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                            <button class="accordion-button collapsed d-flex flex-column" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <li><span class="text-uppercase">Archilli Matias</span></li>
+                            </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse m-3" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <img src="img/perfil-archilli.png" class="img-fluid" alt="Alumno Archilli Matias">
+                            </div>
+                            </div>
+                        </div>
+                    </li>
                     <li class="list-group-item">DNI: 42.536.278</li>
                     <li class="list-group-item">Correo: matias.archilli@davinci.edu.ar</li>
                     <li class="list-group-item">Edad: 23 años</li>

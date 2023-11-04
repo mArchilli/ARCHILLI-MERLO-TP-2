@@ -28,16 +28,16 @@ $catalogo = $objetoDisco->catalogo_por_genero($generoSeleccionado);
 
                         <div class="col-12 col-md-4">
                             <div class="card my-3">
-                                <img src="img/covers/<?= $disco->getPortada() ?>" class="card-img-top" alt="Portada de <?= $disco->getDisco() ?>">
+                                <img src="img/covers/<?= $disco->getPortada() ?>" class="card-img-top" alt="Portada de <?= $disco->getTitulo() ?>">
                                 <div class="card-body">
-                                    <li class="list-group-item">
+                                    <!-- <li class="list-group-item">
                                         <ul class="list-group list-group-flush d-flex gap-3 flex-row">
                                         <?PHP foreach ($disco->getGenero() as $genero) { ?>
                                             <li class="list-group-item px-0 text-style"><?= $genero ?></li>
                                             <?PHP } ?>
                                         </ul>
-                                    </li>
-                                    <h2 class="card-title fs-4"><?= $disco->getDisco() ?></h2>
+                                    </li> -->
+                                    <h2 class="card-title fs-4"><?= $disco->getTitulo() ?></h2>
                                 </div>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item"><span class="fw-bold">Artista:</span> <?= $disco->getArtista() ?></li>

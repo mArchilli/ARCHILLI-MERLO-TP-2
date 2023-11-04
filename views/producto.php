@@ -2,7 +2,6 @@
 
 $id = $_GET['id'] ?? FALSE;
 
-
 $objetoDisco = new Disco();
 
 $disco = $objetoDisco->catalogo_por_id($id);
@@ -17,18 +16,18 @@ $disco = $objetoDisco->catalogo_por_id($id);
                 <div class="card m-5">
                     <div class="row g-0">
                         <div class="col-md-5 d-flex">
-                            <img src="img/covers/<?= $disco->getPortada(); ?>" class="img-fluid rounded-start border-end" alt="Portada de <?= $disco->getDisco();?>">
+                            <img src="img/covers/<?= $disco->getPortada(); ?>" class="img-fluid rounded-start border-end" alt="Portada de <?= $disco->getTitulo();?>">
                         </div>
                         <div class="col-md-7 d-flex flex-column p-3">
                             <div class="card-body flex-grow-0">
-                                <li class="list-group-item">
+                                <!-- <li class="list-group-item">
                                     <ul class="list-group list-group-flush d-flex gap-3 flex-row">
                                     <?PHP foreach ($disco->getGenero() as $genero) { ?>
                                         <li class="list-group-item px-0 text-style"><?= $genero ?></li>
                                         <?PHP } ?>
                                     </ul>
-                                </li>
-                                <h2 class="card-title fw-bold mb-1"><?= $disco->getDisco(); ?></h2>
+                                </li> -->
+                                <h2 class="card-title fw-bold mb-1"><?= $disco->getTitulo(); ?></h2>
                             </div>
 
                             <ul class="list-group list-group-flush">
