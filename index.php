@@ -4,6 +4,8 @@ require_once 'classes/Artista.php';
 require_once 'classes/Genero.php';
 require_once 'classes/Disco.php';
 
+$generos = (new Genero())->listar_generosPrincipales();
+
 
 // Array asociativo de secciones validas
 $secciones_validas = [
@@ -122,11 +124,9 @@ if (!array_key_exists($seccion, $secciones_validas)) {
                         </a>
 
                         <ul class="dropdown-menu nav-show">
-                            <li><a class="dropdown-item" href="index.php?sec=catalogo_x_genero&gen=pop">Pop</a></li>
-                            <li><a class="dropdown-item" href="index.php?sec=catalogo_x_genero&gen=rock">Rock</a></li>
-                            <li><a class="dropdown-item" href="index.php?sec=catalogo_x_genero&gen=electrónica">Electrónica</a></li>
-                            <li><a class="dropdown-item" href="index.php?sec=catalogo_x_genero&gen=rap">Rap</a></li>
-                            <li><a class="dropdown-item" href="index.php?sec=catalogo_x_genero&gen=jazz">Jazz</a></li>
+                            <?PHP foreach ($generos as $genero){?>
+                            <li><a class="dropdown-item" href="index.php?sec=catalogo_x_genero&gen=<?=strtolower($genero['nombre'])?>"><?= $genero['nombre'] ?></a></li>
+                            <?PHP }?>
                         </ul>
                     </li>
 

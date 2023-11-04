@@ -46,5 +46,28 @@ class Genero{
 
         return $genero;
     }
+
+    /**
+     * Devuelve los generos principales 
+     */
+    public function listar_generosPrincipales(): array{
+
+        $conexion = (new Conexion())->getConexion();
+        $query = "SELECT DISTINCT generos.id, generos.nombre 
+        FROM discos 
+        JOIN generos
+        ON discos.id_genero = generos.id;";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $PDOStatement->execute();
+        $generosPrincipales = $PDOStatement->fetchAll();
+
+        //  echo "<pre>";
+        //  print_r($generos);
+        //  echo "</pre>";
+
+        return $generosPrincipales;
+    }
     #endregion
 }
