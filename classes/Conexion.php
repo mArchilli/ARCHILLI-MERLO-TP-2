@@ -5,7 +5,7 @@
  */
 class Conexion
 {
-
+    #region ATRIBUTOS
     private const DB_HOST = 'localhost';
     //private const DB_HOST = '127.0.0.1';
     private const DB_USER = 'root';
@@ -15,6 +15,9 @@ class Conexion
     private const DB_DSN = 'mysql:host=' . self::DB_HOST . ';dbname=' . self::DB_NAME . ';charset=utf8mb4';
 
     private PDO $db;
+    #endregion
+
+    #region METODOS
 
     public function __construct()
     {
@@ -34,4 +37,5 @@ class Conexion
     {
         return $this->db;
     }
+    #endregion
 }

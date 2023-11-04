@@ -3,6 +3,7 @@
 
 class Disco {
 
+    #region ATRIBUTOS
     private $id;
     private $titulo;
     private $id_artista;
@@ -16,85 +17,9 @@ class Disco {
     private $fecha_carga;
     private $genero;
     private $artista;
+    #endregion
 
-
-    /**
-     * Devuelve el catalogo de discos completo
-     * @return array Un array de objetos Disco
-     */
-    public function catalogoCompleto():array{
-
-        $conexion = (new Conexion())->getConexion();
-        $query = "SELECT * FROM discos";
-
-        $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
-        $PDOStatement->execute();
-        $catalogo = $PDOStatement->fetchAll();
-
-        //  echo "<pre>";
-        //  print_r($catalogo);
-        //  echo "</pre>";
-
-        return $catalogo;
-    }
-
-    /**
-     * Devuelve el catalogo de los discos publicados en una epoca en particular
-     * @param string $epoca Un string con el nombre de la epoca
-     * @return Disco[] Un array de objetos Disco 
-     */
-    public function catalogo_por_epoca(string $epoca):array{
-        $catalogoXepoca = [];
-        $catalogo = $this->catalogoCompleto();
-
-        foreach ($catalogo as $d) {
-            if ($d->epoca == $epoca) {
-                $catalogoXepoca[] = $d;
-            }
-        }
-        return $catalogoXepoca;
-    }
-
-    /**
-     * Devuelve el catalogo de los discos publicados en una epoca en particular
-     * @param string $genero Un string con el nombre del genero seleccionado
-     * @return Disco[] Un array de objetos Disco 
-     */
-    public function catalogo_por_genero(string $genero):array{
-        $catalogoXgenero = [];
-        $catalogo = $this->catalogoCompleto();
-
-        foreach ($catalogo as $d) {
-        
-            foreach ($d->genero as $generos){
-
-                if ($genero == strtolower($generos)) { 
-
-                    $catalogoXgenero[] = $d;
-                }
-            }
-            
-        }
-        return $catalogoXgenero;
-    }
-
-    /**
-     * Devuelve los datos de un disco en particular 
-     * @param int $idDisco El ID del disco
-     * @return Disco Un objeto Disco o null
-     */
-    public function catalogo_por_id(int $idDisco):?Disco{
-        $catalogo = $this->catalogoCompleto();
-
-        foreach ($catalogo as $d) {
-            if ($d->id == $idDisco) {
-                return $d;
-            }
-        }
-        return null;
-    }
-
+    #region GETTERS
     /**
      * Devuelve el precio formateado 
      * @return string precio formateado
@@ -151,8 +76,6 @@ class Disco {
         return $this->descripcion;
     }
 
-
-
     /**
      * Get the value of titulo
      */ 
@@ -198,7 +121,10 @@ class Disco {
      */ 
     public function getGenero()
     {
-        return "Genero no encontrado";
+        $genero = (new Genero)->get_x_id($this->id_genero);
+        $nombre = $genero->getNombre();
+
+        return $nombre;
     }
 
     /**
@@ -206,6 +132,114 @@ class Disco {
      */ 
     public function getArtista()
     {
-        return "Artista no encontrado";
+        $artista = (new Artista)->get_x_id($this->id_artista);
+        $nombre = $artista->getNombre();
+
+        return $nombre;
     }
+    #endregion
+
+    #region METODOS
+    /**
+     * Devuelve el catalogo de discos completo
+     * @return array Un array de objetos Disco
+     */
+    public function catalogoCompleto():array{
+
+        $conexion = (new Conexion())->getConexion();
+        $query = "SELECT * FROM discos";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute();
+        $catalogo = $PDOStatement->fetchAll();
+
+        //  echo "<pre>";
+        //  print_r($catalogo);
+        //  echo "</pre>";
+
+        return $catalogo;
+    }
+
+    /**
+     * Devuelve el catalogo de los discos publicados en una epoca en particular
+     * @param string $fechaPublicacion Un string con el año de publicacion
+     * @return Disco[] Un array de objetos Disco 
+     */
+    public function catalogo_por_epoca(string $epoca):array{
+
+        $conexion = (new Conexion())->getConexion();
+        $where = '';
+
+        switch ($epoca) {
+            case '1980':
+                $where = 'publicacion >= 1980 AND publicacion <= 1989';
+                break;
+            case '1990':
+                $where = 'publicacion >= 1990 AND publicacion <= 1999';
+                break;
+            case '2000':
+                $where = 'publicacion >= 2000 AND publicacion <= 2009';
+                break;
+            default:
+                echo "<pre>";
+                print_r("Decada no encontrada");
+                echo "</pre>";
+                break;
+        }
+
+        // Luego, construye tu consulta SQL con la cláusula WHERE dinámica
+        $query = "SELECT * FROM Discos WHERE " . $where;
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute();
+        $catalogo = $PDOStatement->fetchAll();
+
+        // echo "<pre>";
+        // print_r($catalogo);
+        // echo "</pre>";
+
+        return $catalogo;
+    }
+
+    /**
+     * Devuelve el catalogo de los discos publicados en una epoca en particular
+     * @param string $genero Un string con el nombre del genero seleccionado
+     * @return Disco[] Un array de objetos Disco 
+     */
+    public function catalogo_por_genero(string $genero):array{
+        $catalogoXgenero = [];
+        $catalogo = $this->catalogoCompleto();
+
+        foreach ($catalogo as $d) {
+        
+            foreach ($d->genero as $generos){
+
+                if ($genero == strtolower($generos)) { 
+
+                    $catalogoXgenero[] = $d;
+                }
+            }
+            
+        }
+        return $catalogoXgenero;
+    }
+
+    /**
+     * Devuelve los datos de un disco en particular 
+     * @param int $idDisco El ID del disco
+     * @return Disco Un objeto Disco o null
+     */
+    public function catalogo_por_id(int $idDisco):?Disco{
+        $catalogo = $this->catalogoCompleto();
+
+        foreach ($catalogo as $d) {
+            if ($d->id == $idDisco) {
+                return $d;
+            }
+        }
+        return null;
+    }
+    #endregion
 }

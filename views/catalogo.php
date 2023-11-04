@@ -30,6 +30,7 @@ $catalogo = (new Disco)->catalogoCompleto();
                                 </div>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item"><span class="fw-bold">Artista:</span> <?= $disco->getArtista() ?></li>
+                                    <li class="list-group-item"><span class="fw-bold">Genero:</span> <?= $disco->getGenero() ?></li>
                                     <li class="list-group-item"><span class="fw-bold">Sello:</span> <?= $disco->getSello() ?></li>
                                     <li class="list-group-item"><span class="fw-bold">Publicación:</span> <?= $disco->getPublicacion() ?></li>
                                     

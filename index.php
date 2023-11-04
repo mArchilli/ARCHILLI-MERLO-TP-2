@@ -1,6 +1,9 @@
 <?PHP
 require_once 'classes/Conexion.php';
+require_once 'classes/Artista.php';
+require_once 'classes/Genero.php';
 require_once 'classes/Disco.php';
+
 
 // Array asociativo de secciones validas
 $secciones_validas = [
@@ -13,8 +16,8 @@ $secciones_validas = [
     "nosotros" => [
         "titulo" => "Sobre nosotros"
     ],
-    "discos" => [
-        "titulo" => "Nuestro catálogo"
+    "catalogo_x_epoca" => [
+        "titulo" => "catálogo por epoca"
     ],
     "producto" => [
         "titulo" => "Detalle de producto"
@@ -107,9 +110,9 @@ if (!array_key_exists($seccion, $secciones_validas)) {
                         </a>
 
                         <ul class="dropdown-menu nav-show">
-                            <li><a class="dropdown-item" href="index.php?sec=discos&ep=los-80">Los 80'</a></li>
-                            <li><a class="dropdown-item" href="index.php?sec=discos&ep=los-90">Los 90'</a></li>
-                            <li><a class="dropdown-item" href="index.php?sec=discos&ep=los-2000">Los 2000</a></li>
+                            <li><a class="dropdown-item" href="index.php?sec=catalogo_x_epoca&ep=1980">Los 80'</a></li>
+                            <li><a class="dropdown-item" href="index.php?sec=catalogo_x_epoca&ep=1990">Los 90'</a></li>
+                            <li><a class="dropdown-item" href="index.php?sec=catalogo_x_epoca&ep=2000">Los 2000</a></li>
                         </ul>
                     </li>
 
