@@ -1,11 +1,6 @@
 <?PHP
 require_once '../function/autoload.php';
 
-// require_once '../classes/Conexion.php';
-// require_once '../classes/Artista.php';
-// require_once '../classes/Genero.php';
-// require_once '../classes/Disco.php';
-
 // Array asociativo de secciones validas
 $secciones_validas = [
     "dashboard" => [
