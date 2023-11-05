@@ -34,6 +34,8 @@ try {
         $datosPOST['biografia'],
         $imagen,
     );
+
+    header('Location: ../index.php?sec=admin_artista');
 } catch (Exception $e) {
     echo "<pre>";
     print_r($e);

@@ -14,7 +14,7 @@ $listaDeArtistas = (new Artista())->listado_artistas();
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col" width="15%">Imagen</th>
+                        <th scope="col" width="10%">Imagen</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Nacionalidad</th>
                         <th scope="col">Discografia</th>
