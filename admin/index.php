@@ -69,7 +69,7 @@ if (!array_key_exists($seccion, $secciones_validas)) {
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg nav-color px-2 py-3">
         <div class="container-fluid">
-            <a class="navbar-brand d-flex gap-2" href="index.php?sec=inicio">
+            <a class="navbar-brand d-flex gap-2" href="index.php?sec=dashboard">
                 <img src="../img/disco-musica.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top"> 
                 <h1 class="m-auto fs-4">RetroSound</h1>
             </a>

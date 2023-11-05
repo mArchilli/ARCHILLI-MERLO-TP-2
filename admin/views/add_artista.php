@@ -54,7 +54,7 @@
         </div>
         <div class="mb-3">
             <label for="formFile" class="form-label">Seleccione la imagen de perfil del artista</label>
-            <input class="form-control" type="file" id="formFile">
+            <input class="form-control" type="file" id="formFile" name="imagen">
         </div>
         <div class="mb-3">
             <label for="formControlTextarea" class="form-label">Biografia</label>
