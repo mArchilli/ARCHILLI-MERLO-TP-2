@@ -142,7 +142,7 @@ class Disco {
     #region METODOS
     /**
      * Devuelve el catalogo de discos completo
-     * @return array Un array de objetos Disco
+     * @return Disco[] Un array de objetos Disco
      */
     public function catalogoCompleto():array{
 

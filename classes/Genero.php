@@ -2,7 +2,7 @@
 
 class Genero{
 
-    #region METODOS
+    #region ATRIBUTOS
     private $id;
     private $nombre;
     #endregion
@@ -27,6 +27,21 @@ class Genero{
 
     #region METODOS
     /**
+     * inserta un genero en la tabla generos 
+     * @param string $nombre El nombre del genero
+     */
+    public function insert(string $nombre){
+        $conexion = Conexion::getConexion();
+        $query = "INSERT INTO generos (`nombre`) 
+        VALUES (:nombre)";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([
+            "nombre"=> $nombre
+        ]);
+    }
+
+    /**
      * Devuelve los datos de un genero en particular 
      * @param int $idGenero El ID del genero
      * @return Genero Un objeto Genero o null
@@ -49,6 +64,7 @@ class Genero{
 
     /**
      * Devuelve los generos principales 
+     * @return array Un array de objetos Genero 
      */
     public function listar_generosPrincipales(): array{
 
@@ -60,6 +76,27 @@ class Genero{
 
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $PDOStatement->execute();
+        $generosPrincipales = $PDOStatement->fetchAll();
+
+        //  echo "<pre>";
+        //  print_r($generos);
+        //  echo "</pre>";
+
+        return $generosPrincipales;
+    }
+
+    /**
+     * Devuelve los generos principales 
+     * @return Genero[] Un array de objetos Genero 
+     */
+    public function listar_generosTotales(): array{
+
+        $conexion = conexion::getConexion();
+        $query = "SELECT nombre FROM generos";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
         $PDOStatement->execute();
         $generosPrincipales = $PDOStatement->fetchAll();
 

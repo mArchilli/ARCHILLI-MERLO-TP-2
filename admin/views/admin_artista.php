@@ -40,7 +40,7 @@ $listaDeArtistas = (new Artista())->listado_artistas();
                 </tbody>
                 
             </table>
-            <a href="index.php?sec=agregar_artista" class="btn btn-style w-100 fw-bold my-3">Cargar nuevo artista</a>
+            <a href="index.php?sec=add_artista" class="btn btn-style w-100 fw-bold my-3">Cargar nuevo artista</a>
         </div>
         
 </div>

@@ -62,6 +62,26 @@ class Artista{
 
     #region METODOS
     /**
+     * inserta un artista en la tabla artistas 
+     * @param string $nombre El nombre del artista
+     * @param string $nacionalidad La nacionalidad del artista
+     * @param string $biografia La biografia del artista
+     * @param string $imagen La ruta de la imagen de portada .jpg o .png
+     */
+    public function insert(string $nombre, string $nacionalidad, string $biografia, string $imagen){
+        $conexion = Conexion::getConexion();
+        $query = "INSERT INTO artistas (`nombre`, `nacionalidad`, `discografia` ,`biografia`, `imagen`) 
+        VALUES (:nombre, :nacionalidad, NULL , :biografia, :imagen)";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([
+            "nombre"=> $nombre,
+            "nacionalidad"=> $nacionalidad,
+            "biografia"=> $biografia,
+            "imagen"=> $imagen,
+        ]);
+    }
+    /**
      * Devuelve los datos de un artista en particular 
      * @param int $idArtista El ID del artista
      * @return Artista Un objeto Artista o null
@@ -84,6 +104,7 @@ class Artista{
 
     /**
      * Devuelve el listado completo de artistas
+     * @return Artista[] Un array de objetos Artista 
      */
     public function listado_artistas(): array{
         $conexion = conexion::getConexion();

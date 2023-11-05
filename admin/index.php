@@ -19,6 +19,12 @@ $secciones_validas = [
     ], 
     "admin_disco" => [
         "titulo" => "Adminstracion de Discos"
+    ], 
+    "add_artista" => [
+        "titulo" => "Agregar nuevo Artista"
+    ], 
+    "add_genero" => [
+        "titulo" => "Agregar nuevo Genero"
     ]
 ];
 
