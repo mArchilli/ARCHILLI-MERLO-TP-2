@@ -146,7 +146,7 @@ class Disco {
      */
     public function catalogoCompleto():array{
 
-        $conexion = (new Conexion())->getConexion();
+        $conexion = conexion::getConexion();
         $query = "SELECT * FROM discos";
 
         $PDOStatement = $conexion->prepare($query);
@@ -168,7 +168,7 @@ class Disco {
      */
     public function catalogo_por_epoca(string $epoca):array{
 
-        $conexion = (new Conexion())->getConexion();
+        $conexion = conexion::getConexion();
         $where = '';
 
         switch ($epoca) {
@@ -209,8 +209,7 @@ class Disco {
      * @return Disco[] Un array de objetos Disco 
      */
     public function catalogo_por_genero(string $genero):array{
-        $conexion = (new Conexion())->getConexion();
-        $where = '';
+        $conexion = conexion::getConexion();
 
         $generos = (new Genero())->listar_generosPrincipales();
         $catalogo = [];
@@ -238,8 +237,7 @@ class Disco {
      * @return Disco Un objeto Disco o null
      */
     public function catalogo_por_id(int $idDisco): ?Disco{
-        $catalogo = $this->catalogoCompleto();
-        $conexion = (new Conexion())->getConexion();
+        $conexion = conexion::getConexion();
         
         $query = "SELECT * FROM discos WHERE discos.id = ?";
         $PDOStatement = $conexion->prepare($query);
@@ -262,7 +260,7 @@ class Disco {
      */
     public function catalogo_por_precio(int $minimo = 0, int $maximo = 0):array{
 
-        $conexion = (new Conexion())->getConexion();
+        $conexion = conexion::getConexion();
 
         if($maximo){
             $query = "SELECT * FROM discos WHERE precio BETWEEN :minimo AND :maximo";
@@ -280,6 +278,25 @@ class Disco {
         // echo "</pre>";
 
         return $catalogo;
+    }
+
+    /**
+     * Buscador de discos por termino
+     * @param string $busqueda Un string que recibe el termino de busqueda
+     * @return Disco[] Un array de objetos Disco 
+     */
+    public function buscardor(string $busqueda): array{
+
+        $conexion = conexion::getConexion();
+
+        $query = "SELECT * FROM discos WHERE titulo LIKE :busqueda OR descripcion LIKE :busqueda";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute(['busqueda' => "%$busqueda%"]);
+
+        $catalogo = $PDOStatement->fetch();
+        return $catalogo ?? [];
     }
     #endregion
 }

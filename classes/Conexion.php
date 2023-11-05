@@ -14,16 +14,15 @@ class Conexion
 
     private const DB_DSN = 'mysql:host=' . self::DB_HOST . ';dbname=' . self::DB_NAME . ';charset=utf8mb4';
 
-    private PDO $db;
+    private static ?PDO $db = null;
     #endregion
 
     #region METODOS
 
-    public function __construct()
+    public static function conectar()
     {
-
         try {
-            $this->db = new PDO(self::DB_DSN, self::DB_USER, self::DB_PASS);
+            self::$db = new PDO(self::DB_DSN, self::DB_USER, self::DB_PASS);
         } catch (Exception $e) {
             die('Error al conectar con MySQL.');
         }
@@ -33,9 +32,12 @@ class Conexion
      * Función que devuelve una conexión PDO lista para usar
      * @return PDO
      */
-    public function getConexion(): PDO
+    public static function getConexion(): PDO
     {
-        return $this->db;
+        if (self::$db === null) {
+            self::conectar();
+        }
+        return self::$db;
     }
     #endregion
 }

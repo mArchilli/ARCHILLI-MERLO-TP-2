@@ -60,7 +60,7 @@ class Artista{
      * @return Artista Un objeto Artista o null
      */
     public function get_x_id(int $idArtista):Artista{
-        $conexion = (new Conexion())->getConexion();
+        $conexion = conexion::getConexion();
         $query = "SELECT * FROM artistas WHERE id = ?";
 
         $PDOStatement = $conexion->prepare($query);
@@ -79,7 +79,7 @@ class Artista{
      * Devuelve el listado completo de artistas
      */
     public function listado_artistas(): array{
-        $conexion = (new Conexion())->getConexion();
+        $conexion = conexion::getConexion();
         $query = "SELECT * FROM artistas";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);

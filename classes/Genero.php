@@ -32,7 +32,7 @@ class Genero{
      * @return Genero Un objeto Genero o null
      */
     public function get_x_id(int $idGenero):Genero{
-        $conexion = (new Conexion())->getConexion();
+        $conexion = conexion::getConexion();
         $query = "SELECT * FROM generos WHERE id = ?";
 
         $PDOStatement = $conexion->prepare($query);
@@ -52,7 +52,7 @@ class Genero{
      */
     public function listar_generosPrincipales(): array{
 
-        $conexion = (new Conexion())->getConexion();
+        $conexion = conexion::getConexion();
         $query = "SELECT DISTINCT generos.id, generos.nombre 
         FROM discos 
         JOIN generos
