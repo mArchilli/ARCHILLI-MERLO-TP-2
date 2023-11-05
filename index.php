@@ -1,8 +1,5 @@
 <?PHP
-require_once 'classes/Conexion.php';
-require_once 'classes/Artista.php';
-require_once 'classes/Genero.php';
-require_once 'classes/Disco.php';
+require_once 'function/autoload.php';
 
 $generos = (new Genero())->listar_generosPrincipales();
 
