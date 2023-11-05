@@ -11,6 +11,12 @@ $secciones_validas = [
     ], 
     "admin_artista" => [
         "titulo" => "Adminstracion de Artistas"
+    ], 
+    "admin_genero" => [
+        "titulo" => "Adminstracion de Generos"
+    ], 
+    "admin_disco" => [
+        "titulo" => "Adminstracion de Discos"
     ]
 ];
 
@@ -78,13 +84,13 @@ if (!array_key_exists($seccion, $secciones_validas)) {
                         <a class="nav-link active" href="index.php?sec=admin_artista">Artistas</a>
                     </li>
 
-                    <!-- <li class="nav-item">
+                     <li class="nav-item">
                         <a class="nav-link active" href="index.php?sec=admin_genero">Generos</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.php?sec=admin_usuario">Usuarios</a>
-                    </li> -->
+                        <a class="nav-link active" href="index.php?sec=admin_disco">Discos</a>
+                    </li> 
                 </ul>
             </div>
         </div>

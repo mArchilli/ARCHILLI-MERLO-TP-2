@@ -1,6 +1,6 @@
 <div class="row d-flex align-items-center gap-4 py-5 px-3">
     <div class="col-12 col-lg-6">
-        <h2 class="fs-1 my-4 fw-bold">¡Bienvenidos al panel de Administracion!</h2>
+        <h2 class="fs-1 my-4 fw-bold">¡Bienvenido al panel de Administracion!</h2>
         <h3 class="fs-4 my-4 fw-bold">Desplazate desde el menu de navegacion</h3>
 
     </div>
