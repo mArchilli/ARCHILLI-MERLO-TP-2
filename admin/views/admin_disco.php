@@ -35,7 +35,7 @@ $listaDeDiscos = (new Disco())->catalogoCompleto();
                             <td><?= $disco->getArtista() ?></td>
                             <td><?= $disco->getGenero() ?></td>
                             <td><?= $disco->getSello() ?></td>
-                            <td><?= $disco->getPrecio() ?></td>
+                            <td>$<?= $disco->getPrecio() ?></td>
                             <td><?= $disco->getFecha_carga() ?></td>
                             <td>
                                 <a href="index.php?sec=editar_disco&id=<?= $disco->getId() ?>" role="button" class="d-block btn btn-sm btn-warning mb-1">Editar</a>
