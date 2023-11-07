@@ -13,7 +13,6 @@ class Disco {
     private $portada;
     private $publicacion;
     private $precio;
-    private $disco;
     private $fecha_carga;
     #endregion
 
@@ -97,14 +96,6 @@ class Disco {
     {
         return $this->id_genero;
     }
-
-    // /**
-    //  * Get the value of disco
-    //  */ 
-    // public function getDisco()
-    // {
-    //     return $this->disco;
-    // }
 
     /**
      * Get the value of fecha_carga

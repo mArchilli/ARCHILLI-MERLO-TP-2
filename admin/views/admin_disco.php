@@ -32,8 +32,8 @@ $listaDeDiscos = (new Disco())->catalogoCompleto();
                             <td><img src="../img/covers/<?= $disco->getPortada() ?>" alt="Imagen de <?= $disco->getTitulo() ?>"></td>
                             <td><?= $disco->getTitulo() ?></td>
                             <td><?= $disco->getPublicacion() ?></td>
-                            <td><?= $disco->getId_Artista() ?></td>
-                            <td><?= $disco->getId_Genero() ?></td>
+                            <td><?= $disco->getArtista() ?></td>
+                            <td><?= $disco->getGenero() ?></td>
                             <td><?= $disco->getSello() ?></td>
                             <td><?= $disco->getPrecio() ?></td>
                             <td><?= $disco->getFecha_carga() ?></td>
