@@ -13,10 +13,7 @@ class Disco {
     private $portada;
     private $publicacion;
     private $precio;
-    private $disco;
     private $fecha_carga;
-    private $genero;
-    private $artista;
     #endregion
 
     #region GETTERS
@@ -98,14 +95,6 @@ class Disco {
     public function getId_genero()
     {
         return $this->id_genero;
-    }
-
-    /**
-     * Get the value of disco
-     */ 
-    public function getDisco()
-    {
-        return $this->disco;
     }
 
     /**
