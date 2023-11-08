@@ -9,7 +9,7 @@ $artista = (new Artista())->get_x_id($id);
 <div class="container">
     <h2 class="fs-1 my-3 fw-bold text-center">Editar Artista <?= $artista->getNombre() ?></h2>
 
-    <form class="my-3" action="actions/edti_artista_acc.php?id=<?= $artista->getId() ?>" method="POST" enctype="multipart/form-data">
+    <form class="my-3" action="actions/edit_artista_acc.php?id=<?= $artista->getId() ?>" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="formNombre" class="form-label">Nombre</label>
             <input class="form-control" type="text" id="formNombre" name="nombre" placeholder="Ingrese el nombre del artista" value="<?= $artista->getNombre()?>">
@@ -63,9 +63,9 @@ $artista = (new Artista())->get_x_id($id);
         </div>
 
         <div class="mb-3">
-            <label for="formFileOg" class="form-label">Imagen actual</label>
+            <label for="formFile" class="form-label">Imagen actual</label>
             <img src="../img/artistas/<?= $artista->getImagen() ?>" alt="Imagen ilustrativa de <?= $artista->getNombre() ?>" class="img-fluid rounded shadow-sw d-block">
-            <input class="form-control" type="hidden" id="formFileOg" name="imagen_og" value="<?= $artista->getImagen() ?>">
+            <input class="form-control" type="hidden" id="formFile" name="imagen_og" value="<?= $artista->getImagen() ?>">
         </div>
 
         <div class="mb-3">

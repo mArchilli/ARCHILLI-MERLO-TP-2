@@ -81,6 +81,29 @@ class Artista{
             "imagen"=> $imagen,
         ]);
     }
+
+    /**
+     * modifica un artista de la tabla artistas 
+     * @param string $nombre El nombre del artista
+     * @param string $nacionalidad La nacionalidad del artista
+     * @param string $biografia La biografia del artista
+     * @param string $imagen La ruta de la imagen de portada .jpg o .png
+     */
+    public function edit(string $nombre, string $nacionalidad, string $biografia, string $imagen){
+        $conexion = Conexion::getConexion();
+        $query = "UPDATE artistas SET nombre = :nombre, nacionalidad = :nacionalidad, discografia = NULL ,biografia = :biografia, :imagen WHERE id = :id";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([
+            "id"=>$this->id,
+            "nombre"=> $nombre,
+            "nacionalidad"=> $nacionalidad,
+            "biografia"=> $biografia,
+            "imagen"=> $imagen,
+        ]);
+
+    }
+
     /**
      * Devuelve los datos de un artista en particular 
      * @param int $idArtista El ID del artista
