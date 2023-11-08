@@ -32,8 +32,8 @@ $listaDeArtistas = (new Artista())->listado_artistas();
                             <td><?= $artista->getDiscografia()?></td>
                             <td><?= $artista->getBiografia()?></td>
                             <td>
-                                <a href="index.php?sec=editar_artista&id=<?= $artista->getId() ?>" role="button" class="d-block btn btn-sm btn-warning mb-1">Editar</a>
-                                <a href="index.php?sec=eliminar_artista&id=<?= $artista->getId() ?>" role="button" class="d-block btn btn-sm btn-danger mb-1">Eliminar</a>
+                                <a href="index.php?sec=edit_artista&id=<?= $artista->getId() ?>" role="button" class="d-block btn btn-sm btn-warning mb-1">Editar</a>
+                                <a href="index.php?sec=delete_artista&id=<?= $artista->getId() ?>" role="button" class="d-block btn btn-sm btn-danger mb-1">Eliminar</a>
                             </td>
                         </tr>
                     <?php } ?>

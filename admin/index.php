@@ -18,6 +18,9 @@ $secciones_validas = [
     "add_artista" => [
         "titulo" => "Agregar nuevo Artista"
     ], 
+    "edit_artista" => [
+        "titulo" => "Editar un Artista existente"
+    ], 
     "add_genero" => [
         "titulo" => "Agregar nuevo Genero"
     ]
