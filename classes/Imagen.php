@@ -13,4 +13,22 @@ class Imagen{
             throw New Exception("No se pudo cargar la imagen al artista");
         }
     }
+
+    public function eliminarImagen($archivo): bool{
+        if(file_exists($archivo)){
+
+            $file_delete = unlink($archivo);
+
+            if (!$file_delete) {
+                throw new Exception("No se pudo subir la imagen");
+            } else {
+                return TRUE;   
+            }
+
+        } else {
+
+            return FALSE;
+
+        }
+    }
 }

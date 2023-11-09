@@ -70,8 +70,8 @@ class Artista{
      */
     public function insert(string $nombre, string $nacionalidad, string $biografia, string $imagen){
         $conexion = Conexion::getConexion();
-        $query = "INSERT INTO artistas (`nombre`, `nacionalidad`, `discografia` ,`biografia`, `imagen`) 
-        VALUES (:nombre, :nacionalidad, NULL , :biografia, :imagen)";
+        $query = "INSERT INTO artistas (`nombre`, `nacionalidad`, `biografia`, `imagen`) 
+        VALUES (:nombre, :nacionalidad, :biografia, :imagen)";
 
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->execute([

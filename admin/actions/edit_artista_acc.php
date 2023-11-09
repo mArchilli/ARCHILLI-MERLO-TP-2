@@ -25,14 +25,16 @@ try {
     if (!empty($archivosPOST['tmp_name'])) {
         //Se reemplaza la imagen
         $imagen = (new Imagen())->subirImagen(__DIR__ . '/../../img/artistas/', $archivosPOST );
+
+        //BORRAR IMAGEN EXISTENTE EN CASO DE REEMPLAZO
+        (new Imagen())->eliminarImagen(__DIR__ . '/../../img/artistas/'. $datosPOST['imagen_og'] );
+
         
     }else{
         //No se reemplaza la imagen
         $imagen = $datosPOST['imagen_og'];
     }
-
-        
-
+    
     $artista->edit(
         $datosPOST['nombre'],
         $datosPOST['nacionalidad'],
