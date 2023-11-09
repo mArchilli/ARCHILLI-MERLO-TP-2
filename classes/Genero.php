@@ -64,7 +64,7 @@ class Genero{
 
     /**
      * Devuelve los generos principales 
-     * @return array Un array de objetos Genero 
+     * @return array Un array asociativo con los generos 
      */
     public function listar_generosPrincipales(): array{
 
