@@ -5,6 +5,8 @@ $listaDeArtistas = (new Artista())->listado_artistas();
 
 ?>
 
+
+
 <div class="row d-flex justify-content-center align-items-center py-5 px-3">
         <div class="col-12">
             <h2 class="fs-1 my-4 fw-bold text-center">¡Bienvenido al panel de Administracion de Artistas!</h2>
@@ -33,7 +35,8 @@ $listaDeArtistas = (new Artista())->listado_artistas();
                             <td><?= $artista->getBiografia()?></td>
                             <td>
                                 <a href="index.php?sec=edit_artista&id=<?= $artista->getId() ?>" role="button" class="d-block btn btn-sm btn-warning mb-1">Editar</a>
-                                <a href="index.php?sec=delete_artista&id=<?= $artista->getId() ?>" role="button" class="d-block btn btn-sm btn-danger mb-1">Eliminar</a>
+                                <!-- <a href="index.php?sec=delete_artista&id=<?= $artista->getId() ?>" role="button" class="d-block btn btn-sm btn-danger mb-1">Eliminar</a> -->
+                                <a href="javascript:void(0);" onclick="confirmDelete(<?= $artista->getId() ?>)" role="button" class="d-block btn btn-sm btn-danger mb-1">Eliminar</a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -44,3 +47,12 @@ $listaDeArtistas = (new Artista())->listado_artistas();
         </div>
         
 </div>
+
+<script>
+    function confirmDelete(id) {
+        var result = confirm("¿Estás seguro de que deseas eliminar este artista?");
+        if (result) {
+            window.location.href = "actions/delete_artista_acc.php?id=" + id;
+        }
+    }
+</script>

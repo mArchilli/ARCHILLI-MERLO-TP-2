@@ -103,6 +103,20 @@ class Artista{
         ]);       
     }
 
+     /**
+     * Elimina un artista de la tabla artistas
+     */
+    public function delete()
+    {
+        $conexion = Conexion::getConexion();
+        $query = "DELETE FROM artistas WHERE id = :id";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([
+            'id' => $this->id,
+        ]);
+    }
+
     /**
      * Devuelve los datos de un artista en particular 
      * @param int $idArtista El ID del artista

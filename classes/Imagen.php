@@ -15,7 +15,7 @@ class Imagen{
         if($fileUpload){
             return $nombreArchivo;
         }else{
-            throw New Exception("No se pudo cargar la imagen al artista");
+            throw New Exception("No se pudo subir la imagen");
         }
     }
 
@@ -29,7 +29,7 @@ class Imagen{
             $file_delete = unlink($archivo);
 
             if (!$file_delete) {
-                throw new Exception("No se pudo subir la imagen");
+                throw new Exception("No se pudo eliminar la imagen");
             } else {
                 return TRUE;   
             }
