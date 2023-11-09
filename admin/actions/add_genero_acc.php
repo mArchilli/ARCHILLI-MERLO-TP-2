@@ -11,6 +11,8 @@ try {
     (new Genero())->insert(
         $datosPOST['nombre'],
     );
+
+    header('Location: ../index.php?sec=admin_genero');
 } catch (Exception $e) {
     echo "<pre>";
     print_r($e);

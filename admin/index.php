@@ -23,6 +23,9 @@ $secciones_validas = [
     ], 
     "add_genero" => [
         "titulo" => "Agregar nuevo Genero"
+    ], 
+    "edit_genero" => [
+        "titulo" => "Editar un Genero existente"
     ]
 ];
 

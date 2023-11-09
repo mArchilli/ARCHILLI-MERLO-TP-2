@@ -42,6 +42,21 @@ class Genero{
     }
 
     /**
+     * Modifica un genero de la tabla generos 
+     * @param string $nombre El nombre del genero
+     */
+    public function edit(string $nombre){
+        $conexion = Conexion::getConexion();
+        $query = "UPDATE generos SET nombre = :nombre WHERE id = :id";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([
+            'id' => $this->id,
+            'nombre' => $nombre
+        ]);       
+    }
+
+    /**
      * Devuelve los datos de un genero en particular 
      * @param int $idGenero El ID del genero
      * @return Genero Un objeto Genero o null
@@ -93,7 +108,7 @@ class Genero{
     public function listar_generosTotales(): array{
 
         $conexion = conexion::getConexion();
-        $query = "SELECT nombre FROM generos";
+        $query = "SELECT id,nombre FROM generos";
 
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);

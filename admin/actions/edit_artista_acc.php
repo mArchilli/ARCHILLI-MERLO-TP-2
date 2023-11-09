@@ -26,9 +26,10 @@ try {
         //Se reemplaza la imagen
         $imagen = (new Imagen())->subirImagen(__DIR__ . '/../../img/artistas/', $archivosPOST );
 
-        //BORRAR IMAGEN EXISTENTE EN CASO DE REEMPLAZO
-        (new Imagen())->eliminarImagen(__DIR__ . '/../../img/artistas/'. $datosPOST['imagen_og'] );
-
+        if (!empty($datosPOST['imagen_og'])){
+            //BORRAR IMAGEN EXISTENTE EN CASO DE REEMPLAZO
+            (new Imagen())->eliminarImagen(__DIR__ . '/../../img/artistas/'. $datosPOST['imagen_og'] );
+        }   
         
     }else{
         //No se reemplaza la imagen
