@@ -83,7 +83,7 @@ class Artista{
     }
 
     /**
-     * modifica un artista de la tabla artistas 
+     * Modifica un artista de la tabla artistas 
      * @param string $nombre El nombre del artista
      * @param string $nacionalidad La nacionalidad del artista
      * @param string $biografia La biografia del artista
@@ -91,17 +91,16 @@ class Artista{
      */
     public function edit(string $nombre, string $nacionalidad, string $biografia, string $imagen){
         $conexion = Conexion::getConexion();
-        $query = "UPDATE artistas SET nombre = :nombre, nacionalidad = :nacionalidad, discografia = NULL ,biografia = :biografia, :imagen WHERE id = :id";
+        $query = "UPDATE artistas SET nombre = :nombre, nacionalidad = :nacionalidad ,biografia = :biografia, imagen = :imagen WHERE id = :id";
 
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->execute([
-            "id"=>$this->id,
-            "nombre"=> $nombre,
-            "nacionalidad"=> $nacionalidad,
-            "biografia"=> $biografia,
-            "imagen"=> $imagen,
-        ]);
-
+            'id' => $this->id,
+            'nombre' => $nombre,
+            'nacionalidad' => $nacionalidad,
+            'biografia' => $biografia,
+            'imagen' => $imagen,
+        ]);       
     }
 
     /**
