@@ -36,11 +36,7 @@ $listaDeArtistas = (new Artista())->listado_artistas();
                             <td>
                                 <a href="index.php?sec=edit_artista&id=<?= $artista->getId() ?>" role="button" class="d-block btn btn-sm btn-warning mb-1">Editar</a>
                                 <!-- <a href="index.php?sec=delete_artista&id=<?= $artista->getId() ?>" role="button" class="d-block btn btn-sm btn-danger mb-1">Eliminar</a> -->
-<<<<<<< HEAD
                                 <a href="javascript:void(0);" onclick="confirmDelete( '<?= $artista->getId() ?>','<?= $artista->getNombre() ?>')" role="button" class="d-block btn btn-sm btn-danger mb-1">Eliminar</a>
-=======
-                                <a href="javascript:void(0);" onclick="confirmDelete(<?= $artista->getId() ?>)" role="button" class="d-block btn btn-sm btn-danger mb-1">Eliminar</a>
->>>>>>> e2989ab9b70a421db5647b0e0b632540f874c216
                             </td>
                         </tr>
                     <?php } ?>
@@ -53,13 +49,8 @@ $listaDeArtistas = (new Artista())->listado_artistas();
 </div>
 
 <script>
-<<<<<<< HEAD
     function confirmDelete(id, nombre) {
         var result = confirm(`¿Estás seguro de que deseas eliminar al artista ${nombre}?`);
-=======
-    function confirmDelete(id) {
-        var result = confirm("¿Estás seguro de que deseas eliminar este artista?");
->>>>>>> e2989ab9b70a421db5647b0e0b632540f874c216
         if (result) {
             window.location.href = "actions/delete_artista_acc.php?id=" + id;
         }
