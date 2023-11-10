@@ -35,7 +35,6 @@ $listaDeArtistas = (new Artista())->listado_artistas();
                             <td><?= $artista->getBiografia()?></td>
                             <td>
                                 <a href="index.php?sec=edit_artista&id=<?= $artista->getId() ?>" role="button" class="d-block btn btn-sm btn-warning mb-1">Editar</a>
-                                <!-- <a href="index.php?sec=delete_artista&id=<?= $artista->getId() ?>" role="button" class="d-block btn btn-sm btn-danger mb-1">Eliminar</a> -->
                                 <a href="javascript:void(0);" onclick="confirmDelete( '<?= $artista->getId() ?>','<?= $artista->getNombre() ?>')" role="button" class="d-block btn btn-sm btn-danger mb-1">Eliminar</a>
                             </td>
                         </tr>

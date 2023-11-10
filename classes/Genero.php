@@ -57,6 +57,20 @@ class Genero{
     }
 
     /**
+     * Elimina un genero de la tabla generos
+     */
+    public function delete()
+    {
+        $conexion = Conexion::getConexion();
+        $query = "DELETE FROM generos WHERE id = :id";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([
+            'id' => $this->id,
+        ]);
+    }
+
+    /**
      * Devuelve los datos de un genero en particular 
      * @param int $idGenero El ID del genero
      * @return Genero Un objeto Genero o null
