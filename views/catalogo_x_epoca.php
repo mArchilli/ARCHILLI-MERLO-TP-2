@@ -5,9 +5,7 @@ $epocaSeleccionada = $_GET['ep'] ?? FALSE;
 // Formatea los titulos con mayusculas y espacios.
 $titulo = ucwords(str_replace("-", " ", $epocaSeleccionada), " \t\r\n\f\v-");
 
-$objetoDisco = new Disco();
-
-$catalogo = $objetoDisco->catalogo_por_epoca($epocaSeleccionada);
+$catalogo = (new Disco())->catalogo_por_epoca($epocaSeleccionada);
 
 // echo "<pre>";
 // print_r($catalogo);
@@ -24,7 +22,6 @@ $catalogo = $objetoDisco->catalogo_por_epoca($epocaSeleccionada);
                 <div class="row justify-content-center">
                     <!-- Recorro catálogo y alojo en variable $disco -->
                     <?PHP foreach ($catalogo as $disco) { ?>
-
                         <div class="col-12 col-md-4">
                             <div class="card my-3">
                                 <img src="img/covers/<?= $disco->getPortada() ?>" class="card-img-top" alt="Portada de <?= $disco->getTitulo() ?>">

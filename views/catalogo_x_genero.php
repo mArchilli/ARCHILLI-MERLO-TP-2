@@ -6,9 +6,7 @@ $generoSeleccionado = $_GET['gen'] ?? FALSE;
 // Formatea los titulos con mayusculas y espacios.
 $titulo = ucwords(str_replace("-", " ", $generoSeleccionado), " \t\r\n\f\v-");
 
-$objetoDisco = new Disco();
-
-$catalogo = $objetoDisco->catalogo_por_genero($generoSeleccionado);
+$catalogo = (new Disco())->catalogo_por_genero($generoSeleccionado);
 
 // echo "<pre>";
 // print_r($generoSeleccionado);

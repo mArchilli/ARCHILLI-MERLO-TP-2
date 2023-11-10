@@ -2,9 +2,7 @@
 
 $id = $_GET['id'] ?? FALSE;
 
-$objetoDisco = new Disco();
-
-$disco = $objetoDisco->catalogo_por_id($id);
+$disco = (new Disco())->catalogo_por_id($id);
 
 ?>
 
@@ -22,7 +20,7 @@ $disco = $objetoDisco->catalogo_por_id($id);
                             <div class="card-body flex-grow-0">
                                 <li class="list-group-item">
                                     <ul class="list-group list-group-flush d-flex gap-3 flex-row">
-                                        <li class="list-group-item px-0 text-style"><?= $disco->getGenero() ?></li>
+                                        <li class="list-group-item px-0 text-style"><?= $disco->getGenero(); ?></li>
                                     </ul>
                                 </li>
                                     <!--    PARA AGREGAR LOS SUBGENEROS 

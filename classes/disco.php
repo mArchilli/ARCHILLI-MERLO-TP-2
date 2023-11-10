@@ -121,8 +121,8 @@ class Disco {
     #region METODOS
 
     /**
-     * Devuelve una instancia del objeto Disco, con todas sus propiedades configuradas
-     * @return Disco un Disco
+     * Crea la instancia de Disco configurado
+     * @return Disco un Objeto de la clase Disco
      */    
     public function createDisco($discoData): Disco{
         $disco = new Self();
@@ -154,8 +154,8 @@ class Disco {
         //  print_r($catalogo);
         //  echo "</pre>";
 
-        while ($results = $PDOStatement->fetch()){
-            $catalogo[] = $this->createDisco($results);
+        while ($disco = $PDOStatement->fetch()){
+            $catalogo[] = $this->createDisco($disco);
         }
 
         return $catalogo;
@@ -182,9 +182,6 @@ class Disco {
                 $where = 'publicacion >= 2000 AND publicacion <= 2009';
                 break;
             default:
-                echo "<pre>";
-                print_r("Decada no encontrada");
-                echo "</pre>";
                 break;
         }
 
@@ -192,10 +189,12 @@ class Disco {
         $query = "SELECT * FROM discos WHERE " . $where;
 
         $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute();
-        $catalogo = $PDOStatement->fetchAll();
 
+        while ($disco = $PDOStatement->fetch()){
+            $catalogo[] = $this->createDisco($disco);
+        }
         // echo "<pre>";
         // print_r($catalogo);
         // echo "</pre>";
@@ -216,11 +215,16 @@ class Disco {
         
         foreach($generos as $generoBD) {
             if ($genero == strtolower($generoBD['nombre'])){
+
                 $query = "SELECT * FROM discos JOIN generos ON discos.id_genero = generos.id WHERE generos.nombre = ?";
+
                 $PDOStatement = $conexion->prepare($query);
-                $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+                $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
                 $PDOStatement->execute([$genero]);
-                $catalogo = $PDOStatement->fetchAll();
+
+                while ($disco = $PDOStatement->fetch()){
+                    $catalogo[] = $this->createDisco($disco);
+                }
             }
         }
 
@@ -241,9 +245,9 @@ class Disco {
         
         $query = "SELECT * FROM discos WHERE discos.id = ?";
         $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute([$idDisco]);
-        $catalogo = $PDOStatement->fetch();
+        $catalogo = $this->createDisco($PDOStatement->fetch());
 
         // echo "<pre>";
         // print_r($catalogo);
@@ -269,9 +273,12 @@ class Disco {
         }
 
         $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute(['minimo'=> $minimo,'maximo'=> $maximo]);
-        $catalogo = $PDOStatement->fetchAll();
+
+        while ($disco = $PDOStatement->fetch()){
+            $catalogo[] = $this->createDisco($disco);
+        }
 
         // echo "<pre>";
         // print_r($catalogo);
@@ -285,18 +292,20 @@ class Disco {
      * @param string $busqueda Un string que recibe el termino de busqueda
      * @return Disco[] Un array de objetos Disco 
      */
-    public function buscardor(string $busqueda): array{
+    public function buscador(string $busqueda): array{
 
         $conexion = conexion::getConexion();
 
         $query = "SELECT * FROM discos WHERE titulo LIKE :busqueda OR descripcion LIKE :busqueda";
 
         $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute(['busqueda' => "%$busqueda%"]);
 
-        $catalogo = $PDOStatement->fetch();
-        return $catalogo ?? [];
+        while ($disco = $PDOStatement->fetch()){
+            $catalogo[] = $this->createDisco($disco);
+        }
+        return $catalogo;
     }
     #endregion
 
