@@ -4,16 +4,20 @@
 class Disco {
 
     #region ATRIBUTOS
+
     private $id;
     private $titulo;
-    private $id_artista;
-    private $id_genero;
+    private $artista;
+    private $genero;
+    private $subgeneros;
     private $descripcion;
     private $sello;
     private $portada;
     private $publicacion;
     private $precio;
     private $fecha_carga;
+
+    public static $createValues = ['id', 'titulo', 'descripcion', 'sello', 'portada', 'publicacion', 'precio', 'fecha_carga'];
     #endregion
 
     #region GETTERS
@@ -82,22 +86,6 @@ class Disco {
     }
 
     /**
-     * Get the value of id_artista
-     */ 
-    public function getId_artista()
-    {
-        return $this->id_artista;
-    }
-
-    /**
-     * Get the value of id_genero
-     */ 
-    public function getId_genero()
-    {
-        return $this->id_genero;
-    }
-
-    /**
      * Get the value of fecha_carga
      */ 
     public function getFecha_carga()
@@ -110,10 +98,15 @@ class Disco {
      */ 
     public function getGenero()
     {
-        $genero = (new Genero)->get_x_id($this->id_genero);
-        $nombre = $genero->getNombre();
+        return $this->genero->getNombre();
+    }
 
-        return $nombre;
+    /**
+     * Get the value of subgeneros
+     */ 
+    public function getSubgeneros()
+    {
+        return $this->subgeneros;
     }
 
     /**
@@ -121,14 +114,29 @@ class Disco {
      */ 
     public function getArtista()
     {
-        $artista = (new Artista)->get_x_id($this->id_artista);
-        $nombre = $artista->getNombre();
-
-        return $nombre;
+        return $this->artista->getNombre();
     }
     #endregion
 
     #region METODOS
+
+    /**
+     * Devuelve una instancia del objeto Disco, con todas sus propiedades configuradas
+     * @return Disco un Disco
+     */    
+    public function createDisco($discoData): Disco{
+        $disco = new Self();
+
+        foreach (self::$createValues as $value) {
+            $disco->{$value} = $discoData[$value];
+        }
+
+        $disco->artista = (new Artista())->get_x_id($discoData['id_artista']);
+        $disco->genero = (new Genero())->get_x_id($discoData['id_genero']);
+
+        return $disco;
+    }
+
     /**
      * Devuelve el catalogo de discos completo
      * @return Disco[] Un array de objetos Disco
@@ -139,13 +147,16 @@ class Disco {
         $query = "SELECT * FROM discos";
 
         $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute();
-        $catalogo = $PDOStatement->fetchAll();
 
         //  echo "<pre>";
         //  print_r($catalogo);
         //  echo "</pre>";
+
+        while ($results = $PDOStatement->fetch()){
+            $catalogo[] = $this->createDisco($results);
+        }
 
         return $catalogo;
     }
@@ -288,4 +299,6 @@ class Disco {
         return $catalogo ?? [];
     }
     #endregion
+
+    
 }
