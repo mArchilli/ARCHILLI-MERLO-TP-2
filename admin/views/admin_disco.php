@@ -9,7 +9,11 @@ $listaDeDiscos = (new Disco())->catalogoCompleto();
         <div class="col-12">
             <h2 class="fs-1 my-4 fw-bold text-center">¡Bienvenido al panel de Administracion de Generos!</h2>
         </div>
-    
+
+        <div class="d-flex">
+            <a href="index.php?sec=add_disco" class="btn btn-style w-25 m-auto fw-bold my-3">Cargar nuevo disco</a>
+        </div>
+
         <div class="col-12">
             <table class="table">
                 <thead>
@@ -44,15 +48,15 @@ $listaDeDiscos = (new Disco())->catalogoCompleto();
                             <td>$<?= $disco->getPrecio() ?></td>
                             <td><?= $disco->getFecha_carga() ?></td>
                             <td>
-                                <a href="index.php?sec=editar_disco&id=<?= $disco->getId() ?>" role="button" class="d-block btn btn-sm btn-warning mb-1">Editar</a>
-                                <a href="index.php?sec=eliminar_disco&id=<?= $disco->getId() ?>" role="button" class="d-block btn btn-sm btn-danger mb-1">Eliminar</a>
+                                <a href="index.php?sec=edit_disco&id=<?= $disco->getId() ?>" role="button" class="d-block btn btn-sm btn-warning mb-1">Editar</a>
+                                <a href="index.php?sec=delete_disco&id=<?= $disco->getId() ?>" role="button" class="d-block btn btn-sm btn-danger mb-1">Eliminar</a>
                             </td>
                         </tr>
                     <?php } ?>
                 </tbody>
                 
             </table>
-            <a href="index.php?sec=add_genero" class="btn btn-style w-100 fw-bold my-3">Cargar nuevo genero</a>
+            
         </div>
         
 </div>

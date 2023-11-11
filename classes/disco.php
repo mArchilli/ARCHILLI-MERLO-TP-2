@@ -233,11 +233,6 @@ class Disco {
         foreach($generos as $generoBD) {
             if ($genero == strtolower($generoBD['nombre'])){
 
-                // $query = "SELECT * FROM discos 
-                // JOIN generos ON discos.id_genero = generos.id 
-                
-                // WHERE generos.nombre = ?";
-
                 $query = "SELECT discos.*, GROUP_CONCAT(gxd.id_genero) AS subgeneros FROM discos
                 LEFT JOIN generos_x_disco AS gxd ON discos.id = gxd.id_disco
                 JOIN generos ON discos.id_genero = generos.id
