@@ -2,6 +2,9 @@
 
 $listaDeArtistas = (new Artista())->listado_artistas();
 
+// echo "<pre>";
+// print_r($listaDeDiscos);
+// echo "</pre>";
 
 ?>
 
@@ -36,7 +39,12 @@ $listaDeArtistas = (new Artista())->listado_artistas();
                             <td><img class="img-fluid rounded shadow-sw d-block" src="../img/artistas/<?= $artista->getImagen() ?>" alt="Imagen de <?= $artista->getNombre() ?>"></td>
                             <td><?= $artista->getNombre()?></td>
                             <td><?= $artista->getNacionalidad()?></td>
-                            <td><?= $artista->getDiscografia()?></td>
+                            <td>
+                            <?php $discografia = $artista->mostrarDiscografia(); ?>
+                            <?php foreach ($discografia as $disco) { ?>
+                            <p><?= $disco->getTitulo() ?></p>
+                            <?php } ?>
+                            </td>
                             <td><?= $artista->getBiografia()?></td>
                             <td>
                                 <a href="index.php?sec=edit_artista&id=<?= $artista->getId() ?>" role="button" class="d-block btn btn-sm btn-warning mb-1">Editar</a>
