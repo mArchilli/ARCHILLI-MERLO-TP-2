@@ -116,6 +116,8 @@ class Disco {
     {
         return $this->artista->getNombre();
     }
+
+    
     #endregion
 
     #region METODOS
@@ -127,12 +129,23 @@ class Disco {
     public function createDisco($discoData): Disco{
         $disco = new Self();
 
+        // echo "<pre>";
+        // print_r($discoData);
+        // echo "</pre>";
+
         foreach (self::$createValues as $value) {
             $disco->{$value} = $discoData[$value];
         }
 
         $disco->artista = (new Artista())->get_x_id($discoData['id_artista']);
         $disco->genero = (new Genero())->get_x_id($discoData['id_genero']);
+
+        $id_subgeneros = !empty($discoData['subgeneros']) ? explode(",", $discoData['subgeneros']) : [];
+        $subgeneros = [];
+        foreach ($id_subgeneros as $id_subgenero) {
+            $subgeneros[] = (new Genero)->get_x_id(intval($id_subgenero));
+        }
+        $disco->subgeneros = $subgeneros;
 
         return $disco;
     }
@@ -144,7 +157,9 @@ class Disco {
     public function catalogoCompleto():array{
 
         $conexion = conexion::getConexion();
-        $query = "SELECT * FROM discos";
+        $query = "SELECT discos.*, GROUP_CONCAT(gxd.id_genero) AS subgeneros FROM discos
+        LEFT JOIN generos_x_disco AS gxd ON discos.id = gxd.id_disco
+        GROUP BY discos.id";
 
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -169,25 +184,26 @@ class Disco {
     public function catalogo_por_epoca(string $epoca):array{
 
         $conexion = conexion::getConexion();
-        $where = '';
 
+        //cláusula WHERE dinámica
+        $where = '';
         switch ($epoca) {
             case '1980':
-                $where = 'publicacion >= 1980 AND publicacion <= 1989';
+                $where = 'publicacion >= 1980 AND publicacion <= 1989 ';
                 break;
             case '1990':
-                $where = 'publicacion >= 1990 AND publicacion <= 1999';
+                $where = 'publicacion >= 1990 AND publicacion <= 1999 ';
                 break;
             case '2000':
-                $where = 'publicacion >= 2000 AND publicacion <= 2009';
+                $where = 'publicacion >= 2000 AND publicacion <= 2009 ';
                 break;
             default:
                 break;
         }
 
-        // Luego, construye tu consulta SQL con la cláusula WHERE dinámica
-        $query = "SELECT * FROM discos WHERE " . $where;
-
+        
+        $query = "SELECT discos.*, GROUP_CONCAT(gxd.id_genero) AS subgeneros FROM discos
+        LEFT JOIN generos_x_disco AS gxd ON discos.id = gxd.id_disco WHERE " . $where . " GROUP BY discos.id;" ;
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute();
@@ -216,7 +232,16 @@ class Disco {
         foreach($generos as $generoBD) {
             if ($genero == strtolower($generoBD['nombre'])){
 
-                $query = "SELECT * FROM discos JOIN generos ON discos.id_genero = generos.id WHERE generos.nombre = ?";
+                // $query = "SELECT * FROM discos 
+                // JOIN generos ON discos.id_genero = generos.id 
+                
+                // WHERE generos.nombre = ?";
+
+                $query = "SELECT discos.*, GROUP_CONCAT(gxd.id_genero) AS subgeneros FROM discos
+                LEFT JOIN generos_x_disco AS gxd ON discos.id = gxd.id_disco
+                JOIN generos ON discos.id_genero = generos.id
+                WHERE generos.nombre = ? 
+                GROUP BY discos.id";
 
                 $PDOStatement = $conexion->prepare($query);
                 $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -243,7 +268,11 @@ class Disco {
     public function catalogo_por_id(int $idDisco): ?Disco{
         $conexion = conexion::getConexion();
         
-        $query = "SELECT * FROM discos WHERE discos.id = ?";
+        $query = "SELECT discos.*, GROUP_CONCAT(gxd.id_genero) AS subgeneros FROM discos
+        LEFT JOIN generos_x_disco AS gxd ON discos.id = gxd.id_disco
+        WHERE discos.id = ?
+        GROUP BY discos.id";
+
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute([$idDisco]);
@@ -308,6 +337,4 @@ class Disco {
         return $catalogo;
     }
     #endregion
-
-    
 }

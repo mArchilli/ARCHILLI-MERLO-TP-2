@@ -100,8 +100,7 @@ class Genero{
         $conexion = conexion::getConexion();
         $query = "SELECT DISTINCT generos.id, generos.nombre 
         FROM discos 
-        JOIN generos
-        ON discos.id_genero = generos.id;";
+        JOIN generos ON discos.id_genero = generos.id";
 
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);

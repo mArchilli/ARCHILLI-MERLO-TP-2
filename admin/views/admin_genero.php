@@ -2,9 +2,6 @@
 
 $listaDeGeneros = (new Genero())->listar_generosTotales();
 
-
-
-
 ?>
 
 <div class="row d-flex justify-content-center align-items-center py-5 px-3">

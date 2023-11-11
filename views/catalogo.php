@@ -19,16 +19,12 @@ $catalogo = (new Disco)->catalogoCompleto();
                             <div class="card my-3">
                                 <img src="img/covers/<?= $disco->getPortada() ?>" class="card-img-top" alt="Portada de <?= $disco->getTitulo() ?>">
                                 <div class="card-body">
-                                    <li class="list-group-item">
                                         <ul class="list-group list-group-flush d-flex gap-3 flex-row">
-                                            <li class="list-group-item px-0 text-style"><?= $disco->getGenero() ?></li>
-                                        </ul>
-                                    </li>
-                                    <!--    PARA AGREGAR LOS SUBGENEROS 
-                                            <?PHP foreach ($disco->getGenero() as $genero) { ?>
-                                            <li class="list-group-item px-0 text-style"><?= $genero ?></li>
+                                            <li class="list-group-item border-0 px-0 text-style"><?= $disco->getGenero(); ?></li>
+                                            <?PHP foreach ($disco->getSubgeneros() as $subGenero) { ?>
+                                            <li class="list-group-item border-0 px-0 text-style"><?= $subGenero->getNombre(); ?></li>
                                             <?PHP } ?>
-                                    -->
+                                        </ul>
                                     <h2 class="card-title fs-4 m-0"><?= $disco->getTitulo() ?></h2>
                                 </div>
                                 <ul class="list-group list-group-flush">

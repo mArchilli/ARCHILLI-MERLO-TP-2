@@ -18,16 +18,13 @@ $disco = (new Disco())->catalogo_por_id($id);
                         </div>
                         <div class="col-md-7 d-flex flex-column p-3">
                             <div class="card-body flex-grow-0">
-                                <li class="list-group-item">
                                     <ul class="list-group list-group-flush d-flex gap-3 flex-row">
-                                        <li class="list-group-item px-0 text-style"><?= $disco->getGenero(); ?></li>
-                                    </ul>
+                                        <li class="list-group-item border-0 px-0 text-style"><?= $disco->getGenero(); ?></li>
+                                        <?PHP foreach ($disco->getSubgeneros() as $subGenero) { ?>
+                                        <li class="list-group-item border-0 px-0 text-style"><?= $subGenero->getNombre(); ?></li>
+                                        <?PHP } ?>
                                 </li>
-                                    <!--    PARA AGREGAR LOS SUBGENEROS 
-                                    <?PHP foreach ($disco->getGenero() as $genero) { ?>
-                                        <li class="list-group-item px-0 text-style"><?= $genero ?></li>
-                                    <?PHP } ?>
-                                    -->
+                                    
                                 <h2 class="card-title fw-bold mb-1"><?= $disco->getTitulo(); ?></h2>
                             </div>
 
