@@ -162,6 +162,23 @@ class Disco {
     }
 
     /**
+     * Inserta un disco en la tabla discos
+     * @param int $id_disco el id del artista
+     * @param int $id_subGenero el id del genero
+     */
+    public function insert_subGeneros($id_disco, $id_subGenero){
+        $conexion = Conexion::getConexion();
+        $query = "INSERT INTO generos_x_disco (`id_disco`, `id_genero`) 
+        VALUES (:id_disco, :id_genero)";
+
+        $PDOStatement = $conexion->Prepare($query);
+        $PDOStatement = $PDOStatement->execute([
+            'id_disco' => $id_disco,
+            'id_genero' => $id_subGenero,
+        ]);
+    }
+
+    /**
      * Modifica un disco de la tabla discos 
      * @param string $nombre el nombre del disco
      * @param int $idArtista el id del artista
@@ -205,19 +222,16 @@ class Disco {
     }
 
     /**
-     * Inserta un disco en la tabla discos
-     * @param int $id_disco el id del artista
-     * @param int $id_subGenero el id del genero
+     * Elimina un disco de la tabla discos
      */
-    public function insert_subGeneros($id_disco, $id_subGenero){
+    public function delete()
+    {
         $conexion = Conexion::getConexion();
-        $query = "INSERT INTO generos_x_disco (`id_disco`, `id_genero`) 
-        VALUES (:id_disco, :id_genero)";
+        $query = "DELETE FROM discos WHERE id = :id";
 
-        $PDOStatement = $conexion->Prepare($query);
-        $PDOStatement = $PDOStatement->execute([
-            'id_disco' => $id_disco,
-            'id_genero' => $id_subGenero,
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([
+            'id' => $this->id,
         ]);
     }
 

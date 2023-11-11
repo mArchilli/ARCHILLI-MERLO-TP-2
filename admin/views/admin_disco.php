@@ -49,7 +49,7 @@ $listaDeDiscos = (new Disco())->catalogoCompleto();
                             <td><?= $disco->getFecha_carga() ?></td>
                             <td>
                                 <a href="index.php?sec=edit_disco&id=<?= $disco->getId() ?>" role="button" class="d-block btn btn-md btn-warning mb-1">Editar</a>
-                                <a href="index.php?sec=delete_disco&id=<?= $disco->getId() ?>" role="button" class="d-block btn btn-md btn-danger mb-1">Eliminar</a>
+                                <a href="javascript:void(0);" onclick="confirmDelete( '<?= $disco->getId() ?>','<?= $disco->getTitulo() ?>')" role="button" class="d-block btn btn-md btn-danger mb-1">Eliminar</a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -58,5 +58,14 @@ $listaDeDiscos = (new Disco())->catalogoCompleto();
             </table>
             
         </div>
-        
+    
 </div>
+
+<script>
+    function confirmDelete(id, titulo) {
+        var result = confirm(`¿Estás seguro de que deseas eliminar el disco ${titulo}?`);
+        if (result) {
+            window.location.href = "actions/delete_disco_acc.php?id=" + id;
+        }
+    }
+</script>
