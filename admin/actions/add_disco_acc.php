@@ -3,7 +3,7 @@
 require_once '../../function/autoload.php';
 
 $datosPOST = $_POST;
-$archivosPOST = $_FILES['imagen'];
+$archivosPOST = $_FILES['portada'];
 
 // echo "<pre>";
 // print_r($datossPOST);

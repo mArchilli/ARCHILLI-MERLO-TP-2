@@ -54,7 +54,7 @@ $artistas = (new Artista)->listado_artistas();
 
         <div class="mb-3">
             <label for="formFile" class="form-label">Seleccione la imagen de portada</label>
-            <input class="form-control" type="file" id="formFile" name="imagen">
+            <input class="form-control" type="file" id="formFile" name="portada">
         </div>
 
         <div class="mb-3">
