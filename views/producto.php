@@ -19,7 +19,7 @@ $disco = (new Disco())->catalogo_por_id($id);
                         <div class="col-md-7 d-flex flex-column p-3">
                             <div class="card-body flex-grow-0">
                                     <ul class="list-group list-group-flush d-flex gap-3 flex-row">
-                                        <li class="list-group-item border-0 px-0 text-style"><?= $disco->getGenero(); ?></li>
+                                        <li class="list-group-item border-0 px-0 text-style"><?= $disco->getGenero()->getNombre() ?></li>
                                         <?PHP foreach ($disco->getSubgeneros() as $subGenero) { ?>
                                         <li class="list-group-item border-0 px-0 text-style"><?= $subGenero->getNombre(); ?></li>
                                         <?PHP } ?>
@@ -31,7 +31,7 @@ $disco = (new Disco())->catalogo_por_id($id);
 
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item"><?= $disco->getDescripcion(); ?></li>
-                                <li class="list-group-item"><span class="fw-bold">Artista:</span> <?= $disco->getArtista(); ?></li>
+                                <li class="list-group-item"><span class="fw-bold">Artista:</span> <?= $disco->getArtista()->getNombre(); ?></li>
                                 <li class="list-group-item"><span class="fw-bold">Sello:</span> <?= $disco->getSello(); ?></li>
                                 <li class="list-group-item"><span class="fw-bold">Publicación:</span> <?= $disco->getPublicacion(); ?></li>
 

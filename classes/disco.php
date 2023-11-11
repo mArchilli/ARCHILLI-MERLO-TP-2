@@ -91,7 +91,7 @@ class Disco {
      */ 
     public function getGenero()
     {
-        return $this->genero->getNombre();
+        return $this->genero;
     }
 
     /**
@@ -103,11 +103,23 @@ class Disco {
     }
 
     /**
+     * @return array Devuelve un array con los ids de los subgeneros
+     */ 
+    public function get_IdSubgeneros():array
+    {
+        $idSubgeneros = [];
+        foreach ($this->subgeneros as $subgenero) {
+            $idSubgeneros[] = intval($subgenero->getId());
+        }
+        return $idSubgeneros;
+    }
+
+    /**
      * Get the value of artista
      */ 
     public function getArtista()
     {
-        return $this->artista->getNombre();
+        return $this->artista;
     }
 
     

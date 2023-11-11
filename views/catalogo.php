@@ -20,7 +20,7 @@ $catalogo = (new Disco)->catalogoCompleto();
                                 <img src="img/covers/<?= $disco->getPortada() ?>" class="card-img-top" alt="Portada de <?= $disco->getTitulo() ?>">
                                 <div class="card-body">
                                         <ul class="list-group list-group-flush d-flex gap-3 flex-row">
-                                            <li class="list-group-item border-0 px-0 text-style"><?= $disco->getGenero(); ?></li>
+                                            <li class="list-group-item border-0 px-0 text-style"><?= $disco->getGenero()->getNombre() ?></li>
                                             <?PHP foreach ($disco->getSubgeneros() as $subGenero) { ?>
                                             <li class="list-group-item border-0 px-0 text-style"><?= $subGenero->getNombre(); ?></li>
                                             <?PHP } ?>
@@ -28,7 +28,7 @@ $catalogo = (new Disco)->catalogoCompleto();
                                     <h2 class="card-title fs-4 m-0"><?= $disco->getTitulo() ?></h2>
                                 </div>
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><span class="fw-bold">Artista:</span> <?= $disco->getArtista() ?></li>
+                                    <li class="list-group-item"><span class="fw-bold">Artista:</span> <?= $disco->getArtista()->getNombre(); ?></li>
                                     <li class="list-group-item"><span class="fw-bold">Sello:</span> <?= $disco->getSello() ?></li>
                                     <li class="list-group-item"><span class="fw-bold">Publicación:</span> <?= $disco->getPublicacion() ?></li>
                                     

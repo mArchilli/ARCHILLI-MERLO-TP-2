@@ -37,8 +37,8 @@ $listaDeDiscos = (new Disco())->catalogoCompleto();
                             <td><img class="img-fluid rounded shadow-sw d-block" src="../img/covers/<?= $disco->getPortada() ?>" alt="Imagen de <?= $disco->getTitulo() ?>"></td>
                             <td><?= $disco->getTitulo() ?></td>
                             <td><?= $disco->getPublicacion() ?></td>
-                            <td><?= $disco->getArtista() ?></td>
-                            <td><?= $disco->getGenero() ?></td>
+                            <td><?= $disco->getArtista()->getNombre() ?></td>
+                            <td><?= $disco->getGenero()->getNombre() ?></td>
                             <td>
                             <?PHP foreach ($disco->getSubgeneros() as $subgenero) { 
                                echo "<p>" . $subgenero->getNombre() . "</p>";
