@@ -23,6 +23,7 @@ $disco = (new Disco())->catalogo_por_id($id);
                                         <?PHP foreach ($disco->getSubgeneros() as $subGenero) { ?>
                                         <li class="list-group-item border-0 px-0 text-style"><?= $subGenero->getNombre(); ?></li>
                                         <?PHP } ?>
+                                    </ul>
                                 </li>
                                     
                                 <h2 class="card-title fw-bold mb-1"><?= $disco->getTitulo(); ?></h2>
