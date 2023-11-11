@@ -27,8 +27,8 @@ $listaDeGeneros = (new Genero())->listar_generosTotales();
                         <tr>
                             <td><?= $genero->getNombre() ?></td>
                             <td>
-                                <a href="index.php?sec=edit_genero&id=<?= $genero->getId() ?>" role="button" class="d-block btn btn-sm btn-warning mb-1">Editar</a>
-                                <a href="javascript:void(0);" onclick="confirmDelete( '<?= $genero->getId() ?>','<?= $genero->getNombre() ?>')" role="button" class="d-block btn btn-sm btn-danger mb-1">Eliminar</a>
+                                <a href="index.php?sec=edit_genero&id=<?= $genero->getId() ?>" role="button" class="d-block btn btn-md btn-warning mb-1">Editar</a>
+                                <a href="javascript:void(0);" onclick="confirmDelete( '<?= $genero->getId() ?>','<?= $genero->getNombre() ?>')" role="button" class="d-block btn btn-md btn-danger mb-1">Eliminar</a>
                             </td>
                         </tr>
                     <?php } ?>

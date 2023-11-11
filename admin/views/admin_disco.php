@@ -48,8 +48,8 @@ $listaDeDiscos = (new Disco())->catalogoCompleto();
                             <td>$<?= $disco->getPrecio() ?></td>
                             <td><?= $disco->getFecha_carga() ?></td>
                             <td>
-                                <a href="index.php?sec=edit_disco&id=<?= $disco->getId() ?>" role="button" class="d-block btn btn-sm btn-warning mb-1">Editar</a>
-                                <a href="index.php?sec=delete_disco&id=<?= $disco->getId() ?>" role="button" class="d-block btn btn-sm btn-danger mb-1">Eliminar</a>
+                                <a href="index.php?sec=edit_disco&id=<?= $disco->getId() ?>" role="button" class="d-block btn btn-md btn-warning mb-1">Editar</a>
+                                <a href="index.php?sec=delete_disco&id=<?= $disco->getId() ?>" role="button" class="d-block btn btn-md btn-danger mb-1">Eliminar</a>
                             </td>
                         </tr>
                     <?php } ?>
