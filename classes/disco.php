@@ -116,6 +116,57 @@ class Disco {
     #region METODOS
 
     /**
+     * Inserta un disco en la tabla discos
+     * @param string $nombre el nombre del disco
+     * @param int $idArtista el id del artista
+     * @param int $idGenero el id del genero
+     * @param string $descripcion la descripcion del disco
+     * @param string $sello el nombre sello discografico del disco
+     * @param string $portada ruta de la imagen .jpg o .png
+     * @param int $publicacion numero de 4 cifras con el año de publicacion
+     * @param float $precio el precio del disco en ARS
+     * @param string $fecha_carga la fecha de carga
+     */
+    public function insert($titulo, $id_artista, $id_genero, $descripcion, $sello, $portada, $publicacion, $precio, $fecha_carga):int {
+
+        $conexion = Conexion::getConexion();
+        $query = "INSERT INTO discos (`titulo`, `id_artista`, `id_genero`, `descripcion`, `sello`, `portada`, `publicacion`, `precio`, `fecha_carga`) 
+        VALUES (:titulo, :id_artista, :id_genero, :descripcion, :sello, :portada, :publicacion, :precio, :fecha_carga)";
+
+        $PDOStatement = $conexion->Prepare($query);
+        $PDOStatement = $PDOStatement->execute([
+            'titulo' => $titulo,
+            'id_artista' => $id_artista,
+            'id_genero' => $id_genero,
+            'descripcion' => $descripcion,
+            'sello' => $sello,
+            'portada' => $portada,
+            'publicacion' => $publicacion,
+            'precio' => $precio,
+            'fecha_carga' => $fecha_carga
+        ]);
+
+        return $conexion->lastInsertId();
+    }
+
+    /**
+     * Inserta un disco en la tabla discos
+     * @param int $id_disco el id del artista
+     * @param int $id_subGenero el id del genero
+     */
+    public function insert_subGeneros($id_disco, $id_subGenero){
+        $conexion = Conexion::getConexion();
+        $query = "INSERT INTO generos_x_disco (`id_disco`, `id_genero`) 
+        VALUES (:id_disco, :id_genero)";
+
+        $PDOStatement = $conexion->Prepare($query);
+        $PDOStatement = $PDOStatement->execute([
+            'id_disco' => $id_disco,
+            'id_genero' => $id_subGenero,
+        ]);
+    }
+
+    /**
      * Devuelve el precio formateado 
      * @return string precio formateado
      */

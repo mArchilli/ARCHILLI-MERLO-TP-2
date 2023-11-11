@@ -12,8 +12,8 @@ $artistas = (new Artista)->listado_artistas();
     <form class="my-3" action="actions/add_disco_acc.php" method="POST" enctype="multipart/form-data">
 
         <div class="mb-3">
-            <label for="formNombre" class="form-label">Nombre</label>
-            <input class="form-control" type="text" id="formNombre" name="nombre" placeholder="Ingrese el nombre del disco">
+            <label for="formTitulo" class="form-label">Titulo</label>
+            <input class="form-control" type="text" id="formNombre" name="titulo" placeholder="Ingrese el titulo del disco" required>
         </div>
 
         <div class="mb-3">
@@ -40,7 +40,7 @@ $artistas = (new Artista)->listado_artistas();
             <label for="subgeneros" class="form-label d-block">Subgeneros:</label>
                 <?PHP foreach ($generos as $genero) { ?>
                     <div class="form-check form-check-inline">
-                        <input type="checkbox" class="form-check-input" name="subgeneros[]" id="subgeneros_<?= $genero->getId(); ?>" value="<?= $genero->getId(); ?>">
+                        <input type="checkbox" class="form-check-input" name="subgeneros[]" id="subgeneros_<?= $genero->getId(); ?>" value="<?= $genero->getId(); ?>" >
                         <label for="subgeneros_<?= $genero->getId(); ?>" class="form-check-label mb2"><?= $genero->getNombre(); ?></label>
                     </div>
                 <?PHP } ?>
@@ -54,22 +54,22 @@ $artistas = (new Artista)->listado_artistas();
 
         <div class="mb-3">
             <label for="formFile" class="form-label">Seleccione la imagen de portada</label>
-            <input class="form-control" type="file" id="formFile" name="portada">
+            <input class="form-control" type="file" id="formFile" name="portada" required>
         </div>
 
         <div class="mb-3">
             <label for="formPublicacion" class="form-label">Año de publicacion</label>
-            <input class="form-control" type="number" pattern="\d{4}" min="0" max="9999" name="publicacion" placeholder="4 digitos">
+            <input class="form-control" type="number" pattern="\d{4}" min="0" max="9999" name="publicacion" placeholder="4 digitos" required>
         </div>
 
         <div class="mb-3">
             <label for="formPrecio" class="form-label">Precio en ARS</label>
-            <input class="form-control" type="number" step="0.01" min="0" placeholder="Ingrese el precio">
+            <input name="precio" class="form-control" type="number" step="0.01" min="0" placeholder="Ingrese el precio" required>
         </div>
 
         <div class="mb-3">
             <label for="formControlTextarea" class="form-label">Descripcion</label>
-            <textarea class="form-control" id="formControlTextarea" rows="3" name="descripcion"></textarea>
+            <textarea class="form-control" id="formControlTextarea" rows="3" name="descripcion" required></textarea>
         </div>
 
     <button type="submit" class="btn btn-style w-100 fw-bold my-3">Agregar nuevo Disco</button>

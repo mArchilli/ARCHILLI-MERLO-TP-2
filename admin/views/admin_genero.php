@@ -8,6 +8,10 @@ $listaDeGeneros = (new Genero())->listar_generosTotales();
         <div class="col-12">
             <h2 class="fs-1 my-4 fw-bold text-center">¡Bienvenido al panel de Administracion de Generos!</h2>
         </div>
+
+        <div class="d-flex">
+            <a href="index.php?sec=add_genero" class="btn btn-style w-25 m-auto fw-bold my-3">Cargar nuevo genero</a>
+        </div>
     
         <div class="col-12">
             <table class="table">
@@ -31,7 +35,6 @@ $listaDeGeneros = (new Genero())->listar_generosTotales();
                 </tbody>
                 
             </table>
-            <a href="index.php?sec=add_genero" class="btn btn-style w-100 fw-bold my-3">Cargar nuevo genero</a>
         </div>
         
 </div>
