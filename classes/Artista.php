@@ -6,7 +6,6 @@ class Artista{
     private $id;
     private $nombre; 
     private $nacionalidad;
-    private $discografia;
     private $biografia;
     private $imagen;
     #endregion
@@ -33,14 +32,6 @@ class Artista{
     public function getNacionalidad()
     {
         return $this->nacionalidad;
-    }
-
-    /**
-     * Get the value of discografia
-     */ 
-    public function getDiscografia()
-    {
-        return $this->discografia;
     }
 
     /**
@@ -155,6 +146,16 @@ class Artista{
         //  echo "</pre>";
 
         return $artistas;
+    }
+
+    /**
+     * Mostrar discografía del artista
+     */
+    public function mostrarDiscografia() {
+        $discos = (new Disco)->disco_x_artista($this->id);
+        
+        return $discos;
+
     }
     #endregion
 

@@ -332,5 +332,28 @@ class Disco {
         }
         return $catalogo;
     }
+    
+    /**
+    * Devuelve los discos de un determinado artista
+    *@param int $id_artista El ID unico del artista buscado
+    *
+    *@return Disco[] Un array de objetos Disco
+    */
+    public function disco_x_artista(int $id_artista): Array{
+        $conexion = conexion::getConexion();
+        $query = "SELECT * FROM discos WHERE id_artista = ?";
+       
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $PDOStatement->execute([$id_artista]);
+
+        $catalogo = [];
+
+        while ($disco = $PDOStatement->fetch()){
+            $catalogo[] = $this->createDisco($disco);
+        }
+        return $catalogo;
+    }
+
     #endregion
 }
