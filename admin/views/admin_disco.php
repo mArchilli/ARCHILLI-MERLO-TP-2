@@ -11,7 +11,8 @@ $listaDeDiscos = (new Disco())->catalogoCompleto();
         </div>
 
         <div class="d-flex">
-            <a href="index.php?sec=add_disco" class="btn btn-style w-25 m-auto fw-bold my-3">Cargar nuevo disco</a>
+            <a href="index.php?sec=dashboard" class="btn btn-style w-25 m-auto fw-bold my-3">Volver al dashboard</a>
+            <a href="index.php?sec=add_artista" class="btn btn-style w-25 m-auto fw-bold my-3">Cargar nuevo artista</a>
         </div>
 
         <div class="col-12">

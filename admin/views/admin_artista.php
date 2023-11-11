@@ -15,7 +15,8 @@ $listaDeArtistas = (new Artista())->listado_artistas();
             <h2 class="fs-1 my-4 fw-bold text-center">¡Bienvenido al panel de Administracion de Artistas!</h2>
         </div>
         
-        <div class="d-flex">
+        <div class="d-flex ">
+            <a href="index.php?sec=dashboard" class="btn btn-style w-25 m-auto fw-bold my-3">Volver al dashboard</a>
             <a href="index.php?sec=add_artista" class="btn btn-style w-25 m-auto fw-bold my-3">Cargar nuevo artista</a>
         </div>
         
