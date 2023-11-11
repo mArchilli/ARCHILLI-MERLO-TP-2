@@ -21,7 +21,7 @@ $listaDeArtistas = (new Artista())->listado_artistas();
         
 
         <div class="col-12">
-            <table class="table">
+            <table class="table table-borderless table-hover">
                 <thead>
                     <tr>
                         <th scope="col" width="25%">Imagen</th>

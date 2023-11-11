@@ -7,7 +7,7 @@ $listaDeDiscos = (new Disco())->catalogoCompleto();
 
 <div class="row d-flex justify-content-center align-items-center py-5 px-3">
         <div class="col-12">
-            <h2 class="fs-1 my-4 fw-bold text-center">¡Bienvenido al panel de Administracion de Generos!</h2>
+            <h2 class="fs-1 my-4 fw-bold text-center">¡Bienvenido al panel de Administracion de Discos!</h2>
         </div>
 
         <div class="d-flex">
@@ -15,7 +15,7 @@ $listaDeDiscos = (new Disco())->catalogoCompleto();
         </div>
 
         <div class="col-12">
-            <table class="table">
+            <table class="table table-borderless table-hover">
                 <thead>
                     <tr>
                         <th scope="col" width="25%">Portada</th>

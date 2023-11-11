@@ -14,7 +14,7 @@ $listaDeGeneros = (new Genero())->listar_generosTotales();
         </div>
     
         <div class="col-12">
-            <table class="table">
+            <table class="table table-borderless table-hover">
                 <thead>
                     <tr>
                         <th scope="col" width="95%">Nombre</th>
