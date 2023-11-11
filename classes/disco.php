@@ -21,14 +21,7 @@ class Disco {
     #endregion
 
     #region GETTERS
-    /**
-     * Devuelve el precio formateado 
-     * @return string precio formateado
-     */
-    public function precio_formateado():string{
-        return number_format($this->precio, 2, ",", ".");
-    }
-
+   
     /**
      * Get the value of id
      */
@@ -121,6 +114,14 @@ class Disco {
     #region METODOS
 
     /**
+     * Devuelve el precio formateado 
+     * @return string precio formateado
+     */
+    public function precio_formateado():string{
+        return number_format($this->precio, 2, ",", ".");
+    }
+
+    /**
      * Crea la instancia de Disco configurado
      * @return Disco un Objeto de la clase Disco
      */    
@@ -185,7 +186,7 @@ class Disco {
                 break;
         }
 
-        // Luego, construye tu consulta SQL con la cláusula WHERE dinámica
+        // Consulta SQL con la cláusula WHERE dinámica
         $query = "SELECT * FROM discos WHERE " . $where;
 
         $PDOStatement = $conexion->prepare($query);
@@ -307,7 +308,27 @@ class Disco {
         }
         return $catalogo;
     }
-    #endregion
+    
+    /**
+     * Devuelve los discos de determinado artista
+     * @param int $idArtista El ID único del artista buscado 
+     * 
+     * @return Disco[] Un array de objetos Disco
+     */
+    public function disco_x_artista(int $idArtista): array
+    {
+        $conexion = Conexion::getConexion();
+        $query = "SELECT * FROM discos WHERE id_artista = ?";
 
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute([$idArtista]);
+
+        $resultado = $PDOStatement->fetchAll();
+
+        return $resultado ?? null;
+    }
+
+    #endregion
     
 }
