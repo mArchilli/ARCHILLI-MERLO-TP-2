@@ -19,6 +19,7 @@ $listaDeDiscos = (new Disco())->catalogoCompleto();
                         <th scope="col">Publicacion</th>
                         <th scope="col">Artista</th>
                         <th scope="col">Genero</th>
+                        <th scope="col">Subgeneros</th>
                         <th scope="col">Sello</th>
                         <th scope="col">Precio</th>
                         <th scope="col">Fecha de Carga</th>                     
@@ -29,11 +30,16 @@ $listaDeDiscos = (new Disco())->catalogoCompleto();
                 <tbody>
                     <?php foreach ($listaDeDiscos as $disco) { ?>
                         <tr>
-                            <td><img src="../img/covers/<?= $disco->getPortada() ?>" alt="Imagen de <?= $disco->getTitulo() ?>"></td>
+                            <td><img class="img-fluid rounded shadow-sw d-block" src="../img/covers/<?= $disco->getPortada() ?>" alt="Imagen de <?= $disco->getTitulo() ?>"></td>
                             <td><?= $disco->getTitulo() ?></td>
                             <td><?= $disco->getPublicacion() ?></td>
                             <td><?= $disco->getArtista() ?></td>
                             <td><?= $disco->getGenero() ?></td>
+                            <td>
+                            <?PHP foreach ($disco->getSubgeneros() as $subgenero) { 
+                               echo "<p>" . $subgenero->getNombre() . "</p>";
+                            } ?>
+                            </td>
                             <td><?= $disco->getSello() ?></td>
                             <td>$<?= $disco->getPrecio() ?></td>
                             <td><?= $disco->getFecha_carga() ?></td>

@@ -11,12 +11,17 @@ $listaDeArtistas = (new Artista())->listado_artistas();
         <div class="col-12">
             <h2 class="fs-1 my-4 fw-bold text-center">¡Bienvenido al panel de Administracion de Artistas!</h2>
         </div>
-    
+        
+        <div class="d-flex">
+            <a href="index.php?sec=add_artista" class="btn btn-style w-25 m-auto fw-bold my-3">Cargar nuevo artista</a>
+        </div>
+        
+
         <div class="col-12">
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col" width="10%">Imagen</th>
+                        <th scope="col" width="25%">Imagen</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Nacionalidad</th>
                         <th scope="col">Discografia</th>
@@ -28,7 +33,7 @@ $listaDeArtistas = (new Artista())->listado_artistas();
                 <tbody>
                     <?php foreach ($listaDeArtistas as $artista) { ?>
                         <tr>
-                            <td><img src="../img/artistas/<?= $artista->getImagen() ?>" alt="Imagen de <?= $artista->getNombre() ?>"></td>
+                            <td><img class="img-fluid rounded shadow-sw d-block" src="../img/artistas/<?= $artista->getImagen() ?>" alt="Imagen de <?= $artista->getNombre() ?>"></td>
                             <td><?= $artista->getNombre()?></td>
                             <td><?= $artista->getNacionalidad()?></td>
                             <td><?= $artista->getDiscografia()?></td>
@@ -42,7 +47,7 @@ $listaDeArtistas = (new Artista())->listado_artistas();
                 </tbody>
                 
             </table>
-            <a href="index.php?sec=add_artista" class="btn btn-style w-100 fw-bold my-3">Cargar nuevo artista</a>
+            
         </div>
         
 </div>
