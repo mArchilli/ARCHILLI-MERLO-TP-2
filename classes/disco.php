@@ -162,6 +162,49 @@ class Disco {
     }
 
     /**
+     * Modifica un disco de la tabla discos 
+     * @param string $nombre el nombre del disco
+     * @param int $idArtista el id del artista
+     * @param int $idGenero el id del genero
+     * @param string $descripcion la descripcion del disco
+     * @param string $sello el nombre sello discografico del disco
+     * @param string $portada ruta de la imagen .jpg o .png
+     * @param int $publicacion numero de 4 cifras con el año de publicacion
+     * @param float $precio el precio del disco en ARS
+     * @param string $fecha_carga la fecha de carga
+     */
+    public function edit($titulo, $id_artista, $id_genero, $descripcion, $sello, $portada, $publicacion, $precio, $fecha_carga) {
+
+        $conexion = Conexion::getConexion();
+        $query = "UPDATE discos SET 
+        titulo =:titulo,
+        id_artista = :id_artista,
+        id_genero = :id_genero,
+        descripcion = :descripcion,
+        sello = :sello,
+        portada = :portada,
+        publicacion = :publicacion,
+        precio = :precio,
+        fecha_carga = :fecha_carga
+        WHERE id = :id";
+
+        $PDOStatement = $conexion->Prepare($query);
+        $PDOStatement = $PDOStatement->execute([
+            'id' => $this->id,
+            'titulo' => $titulo,
+            'id_artista' => $id_artista,
+            'id_genero' => $id_genero,
+            'descripcion' => $descripcion,
+            'sello' => $sello,
+            'portada' => $portada,
+            'publicacion' => $publicacion,
+            'precio' => $precio,
+            'fecha_carga' => $fecha_carga
+        ]);
+
+    }
+
+    /**
      * Inserta un disco en la tabla discos
      * @param int $id_disco el id del artista
      * @param int $id_subGenero el id del genero
@@ -175,6 +218,21 @@ class Disco {
         $PDOStatement = $PDOStatement->execute([
             'id_disco' => $id_disco,
             'id_genero' => $id_subGenero,
+        ]);
+    }
+
+    /**
+     * Elimina los subgeneros de un disco
+     * @param int $id_disco el id del disco
+     */
+    public function clear_subGeneros(){
+
+        $conexion = Conexion::getConexion();
+        $query = "DELETE FROM generos_x_disco WHERE id_disco = :id_disco";
+
+        $PDOStatement = $conexion->Prepare($query);
+        $PDOStatement = $PDOStatement->execute([
+            'id_disco' => $this->id
         ]);
     }
 
