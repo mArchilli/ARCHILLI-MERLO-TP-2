@@ -115,7 +115,7 @@ class Genero{
     }
 
     /**
-     * Devuelve los generos principales 
+     * Devuelve la totalidad de los generos
      * @return Genero[] Un array de objetos Genero 
      */
     public function listar_generosTotales(): array{

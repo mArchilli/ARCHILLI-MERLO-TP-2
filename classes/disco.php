@@ -21,14 +21,7 @@ class Disco {
     #endregion
 
     #region GETTERS
-    /**
-     * Devuelve el precio formateado 
-     * @return string precio formateado
-     */
-    public function precio_formateado():string{
-        return number_format($this->precio, 2, ",", ".");
-    }
-
+   
     /**
      * Get the value of id
      */
@@ -121,6 +114,14 @@ class Disco {
     #endregion
 
     #region METODOS
+
+    /**
+     * Devuelve el precio formateado 
+     * @return string precio formateado
+     */
+    public function precio_formateado():string{
+        return number_format($this->precio, 2, ",", ".");
+    }
 
     /**
      * Crea la instancia de Disco configurado
@@ -336,5 +337,31 @@ class Disco {
         }
         return $catalogo;
     }
+<<<<<<< HEAD
     #endregion
+=======
+    
+    /**
+     * Devuelve los discos de determinado artista
+     * @param int $idArtista El ID único del artista buscado 
+     * 
+     * @return Disco[] Un array de objetos Disco
+     */
+    public function disco_x_artista(int $idArtista): array
+    {
+        $conexion = Conexion::getConexion();
+        $query = "SELECT * FROM discos WHERE id_artista = ?";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute([$idArtista]);
+
+        $resultado = $PDOStatement->fetchAll();
+
+        return $resultado ?? null;
+    }
+
+    #endregion
+    
+>>>>>>> 1c48c70a96f0b71e06c896263dc6e5b1e13cc975
 }
