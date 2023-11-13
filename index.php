@@ -150,10 +150,6 @@ if (!array_key_exists($seccion, $secciones_validas)) {
         </main>
 
     <!-- footer -->
-    <!-- <footer class="bg-secondary text-light text-center p-2">
-        
-
-    </footer> -->
 
     <footer class="footerDatos">
         <!-- Grid container -->
