@@ -21,6 +21,13 @@ class Autenticacion{
             if(password_verify($password, $datosUsuario->getPassword())){
                 //En caso de coincidir retorna TRUE
                 echo "<p>PASSWORD CORRECTA</p>";
+
+                $datosLogin['username'] = $datosUsuario->getNombre_usuario();
+                $datosLogin['nombre_completo'] = $datosUsuario->getNombre_completo();
+                $datosLogin['id'] = $datosUsuario->getId();
+                $datosLogin['password'] = $datosUsuario->getPassword();
+                $_SESSION['loggedIn'] = $datosLogin;
+
                 return true;
             }else{
                 //En caso de NO coincidir retorna FALSE
@@ -33,6 +40,12 @@ class Autenticacion{
             return NULL;
         }
         
+    }
+
+    public function log_out()
+    {
+        if(isset($_SESSION['loggedIn'])){
+            unset($_SESSION['loggedIn']);
     }
 
     #endregion
