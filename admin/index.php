@@ -2,7 +2,10 @@
 require_once '../function/autoload.php';
 
 // Array asociativo de secciones validas
-$secciones_validas = [
+$secciones_validas = [ 
+    "login" => [
+        "titulo" => "Login"
+    ],
     "dashboard" => [
         "titulo" => "Panel de Administracion"
     ], 
