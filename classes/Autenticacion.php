@@ -55,6 +55,9 @@ class Autenticacion{
         
     }
 
+    /**
+     * Cierra la sesion
+     */
     public function log_out()
     {
         if(isset($_SESSION['loggedIn'])){
@@ -62,6 +65,10 @@ class Autenticacion{
         }
     }
 
+    /**
+     * Verifica si exista una conexion
+     * @return bool Devuelve TRUE en caso de existir sino ejecuta el header
+     */
     public function verify(): bool{
         if(isset($_SESSION['loggedIn'])){
             return TRUE;

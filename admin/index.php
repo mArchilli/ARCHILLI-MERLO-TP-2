@@ -72,6 +72,8 @@ if (!array_key_exists($seccion, $secciones_validas)) {
     $titulo = $secciones_validas[$seccion]['titulo'];
 }
 
+$userData = $_SESSION['loggedIn'] ?? FALSE;
+
 ?>
 
 <!DOCTYPE html>
@@ -115,19 +117,27 @@ if (!array_key_exists($seccion, $secciones_validas)) {
 
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php?sec=dashboard">Dashboard</a>
+                        <a class="nav-link active <?= $userData ? "" : "d-none" ?>" aria-current="page" href="index.php?sec=dashboard">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.php?sec=admin_artista">Artistas</a>
+                        <a class="nav-link active <?= $userData ? "" : "d-none" ?>" href="index.php?sec=admin_artista">Artistas</a>
                     </li>
 
                      <li class="nav-item">
-                        <a class="nav-link active" href="index.php?sec=admin_genero">Generos</a>
+                        <a class="nav-link active <?= $userData ? "" : "d-none" ?>" href="index.php?sec=admin_genero">Generos</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.php?sec=admin_disco">Discos</a>
+                        <a class="nav-link active <?= $userData ? "" : "d-none" ?>" href="index.php?sec=admin_disco">Discos</a>
                     </li> 
+
+                    <li class="nav-item">
+                        <a class="nav-link active <?= $userData ? "d-none" : "" ?>" href="index.php?sec=login">Log In</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active <?= $userData ? "" : "d-none" ?>" href="actions/auth_logout.php">Log Out</a>
+                    </li>
                 </ul>
             </div>
         </div>
