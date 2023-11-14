@@ -62,5 +62,13 @@ class Autenticacion{
         }
     }
 
+    public function verify(): bool{
+        if(isset($_SESSION['loggedIn'])){
+            return TRUE;
+        } else {
+            header('location: index.php?sec=login');
+        }
+    }
+
     #endregion
 }

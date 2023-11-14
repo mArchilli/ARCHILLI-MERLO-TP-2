@@ -1,5 +1,6 @@
 <?PHP
 
+//DESCOMENTAR Y RECARGAR LA VISTA PARA DESLOGUEAR
 //(new Autenticacion())->log_out();
 
 ?>

@@ -5,41 +5,51 @@ echo "<pre>";
 print_r($_SESSION);
 echo "</pre>";
 
-
 // Array asociativo de secciones validas
 $secciones_validas = [ 
     "login" => [
-        "titulo" => "Login"
+        "titulo" => "Login",
+        "restringido" => FALSE
     ],
     "dashboard" => [
-        "titulo" => "Panel de Administracion"
+        "titulo" => "Panel de Administracion",
+        "restringido" => TRUE
     ], 
     "admin_artista" => [
-        "titulo" => "Adminstracion de Artistas"
+        "titulo" => "Adminstracion de Artistas",
+        "restringido" => TRUE
     ], 
     "admin_genero" => [
-        "titulo" => "Adminstracion de Generos"
+        "titulo" => "Adminstracion de Generos",
+        "restringido" => TRUE
     ], 
     "admin_disco" => [
-        "titulo" => "Adminstracion de Discos"
+        "titulo" => "Adminstracion de Discos",
+        "restringido" => TRUE
     ], 
     "add_disco" => [
-        "titulo" => "Agregar un Disco existente"
+        "titulo" => "Agregar un Disco existente",
+        "restringido" => TRUE
     ], 
     "edit_disco" => [
-        "titulo" => "Editar un Disco existente"
+        "titulo" => "Editar un Disco existente",
+        "restringido" => TRUE
     ], 
     "add_artista" => [
-        "titulo" => "Agregar nuevo Artista"
+        "titulo" => "Agregar nuevo Artista",
+        "restringido" => TRUE
     ], 
     "edit_artista" => [
-        "titulo" => "Editar un Artista existente"
+        "titulo" => "Editar un Artista existente",
+        "restringido" => TRUE
     ], 
     "add_genero" => [
-        "titulo" => "Agregar nuevo Genero"
+        "titulo" => "Agregar nuevo Genero",
+        "restringido" => TRUE
     ], 
     "edit_genero" => [
-        "titulo" => "Editar un Genero existente"
+        "titulo" => "Editar un Genero existente",
+        "restringido" => TRUE
     ]
 ];
 
@@ -54,6 +64,10 @@ if (!array_key_exists($seccion, $secciones_validas)) {
 } else {
     // Si existe
     $vista = $seccion;
+    // Cheque si es restringida o no
+    if ($secciones_validas[$seccion]['restringido']) {
+        (new Autenticacion())->verify();
+    }
     // Asigna a $titulo el valor de "titulo" dentro del array
     $titulo = $secciones_validas[$seccion]['titulo'];
 }
