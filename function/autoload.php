@@ -1,5 +1,6 @@
 <?php
 
+//Simpre que se inicia una pagina se abre la sesion
 session_start();
 
 function autoloadClasses($nombreClase){

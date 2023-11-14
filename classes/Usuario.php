@@ -7,7 +7,7 @@ class Usuario
     private $email;
     private $nombre_usuario;
     private $nombre_completo;
-    private $password;
+    private $clave;
     private $rol;
     #endregion
 
@@ -47,9 +47,9 @@ class Usuario
     /**
      * Get the value of password
      */ 
-    public function getPassword()
+    public function getClave()
     {
-        return $this->password;
+        return $this->clave;
     }
 
     /**

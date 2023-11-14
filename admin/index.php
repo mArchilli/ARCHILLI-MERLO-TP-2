@@ -1,6 +1,11 @@
 <?PHP
 require_once '../function/autoload.php';
 
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
+
+
 // Array asociativo de secciones validas
 $secciones_validas = [ 
     "login" => [

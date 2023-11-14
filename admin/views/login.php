@@ -1,3 +1,9 @@
+<?PHP
+
+//(new Autenticacion())->log_out();
+
+?>
+
 <div class="container">
     <form action="actions/auth_login.php" method="POST" class="my-3">
         <h2 class="h3 mb-3 fw-normal text-center">Iniciar sesion</h2>
