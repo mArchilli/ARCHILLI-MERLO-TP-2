@@ -7,8 +7,13 @@ $artista = (new Artista())->get_x_id($id);
 ?>
 
 <div class="container">
-    <h2 class="fs-1 my-3 fw-bold text-center">Editar Artista <?= $artista->getNombre() ?></h2>
-
+    
+    <div class="d-flex justify-content-between align-items-center">
+        <a href="index.php?sec=admin_artista" role="button" class="btn btn-md btn-danger mb-1">Volver</a>
+        <h2 class="fs-1 my-3 fw-bold text-center">Editar Artista <?= $artista->getNombre() ?></h2>
+        <div></div>
+    </div>
+    
     <form class="my-3" action="actions/edit_artista_acc.php?id=<?= $artista->getId() ?>" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="formNombre" class="form-label">Nombre</label>

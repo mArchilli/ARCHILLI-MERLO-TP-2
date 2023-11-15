@@ -13,7 +13,12 @@ $artistas = (new Artista)->listado_artistas();
 
 
 <div class="container">
-    <h2 class="fs-1 my-3 fw-bold text-center">Editar Disco <?= $disco->getTitulo() ?></h2>
+
+    <div class="d-flex justify-content-between align-items-center">
+        <a href="index.php?sec=admin_disco" role="button" class="btn btn-md btn-danger mb-1">Volver</a>
+        <h2 class="fs-1 my-3 fw-bold text-center">Editar Disco <?= $disco->getTitulo() ?></h2>
+        <div></div>
+    </div>
 
     <form class="my-3" action="actions/edit_disco_acc.php?id=<?= $disco->getId() ?>" method="POST" enctype="multipart/form-data">
 
