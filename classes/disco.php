@@ -413,7 +413,11 @@ class Disco {
         // print_r($catalogo);
         // echo "</pre>";
 
-        return $catalogo ?? null;
+        if($catalogo){
+            return $catalogo;
+        }else{
+            return null;
+        }
     }
 
     /**

@@ -3,9 +3,14 @@ $id = $_GET['id'] ?? FALSE;
 
 $disco = (new Disco())->catalogo_por_id($id);
 
+if ($disco != null) {
 $subgeneros_selected = $disco->get_IdSubgeneros();
 $generos = (new Genero)->listar_generosTotales();
 $artistas = (new Artista)->listado_artistas();
+}
+
+
+
 
 
 
@@ -13,6 +18,7 @@ $artistas = (new Artista)->listado_artistas();
 
 
 <div class="container">
+    <?PHP if ($disco != null) { ?>
         <div class="d-flex justify-content-between align-items-center">
             <a href="index.php?sec=admin_disco" role="button" class="btn btn-md btn-danger mb-1">Volver</a>
             <h2 class="fs-1 my-3 fw-bold text-center">Editar Disco <?= $disco->getTitulo() ?></h2>
@@ -121,4 +127,10 @@ $artistas = (new Artista)->listado_artistas();
             </div>
         </div> 
     </form>
+    <?PHP } else { ?>
+        <div class="col my-md-5 text-center">
+                <h2 class="fs-3 my-5 text-error">No se encontro el disco buscado</h2>
+                <a href="index.php?sec=dashboard" class="btn btn-style py-2 px-5 fw-bold fs-5 my-5">Volver al Dashboard</a>
+        </div>
+    <?PHP } ?>
 </div>

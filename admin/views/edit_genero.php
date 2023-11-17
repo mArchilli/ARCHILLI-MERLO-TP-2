@@ -28,7 +28,7 @@ $genero = (new Genero())->get_x_id($id);
         </div>
     <button type="submit" class="btn btn-style w-100 fw-bold my-3">Modificar genero</button>
     </form>
-    <?PHP } else { ?>
+<?PHP } else { ?>
         <div class="col my-md-5 text-center">
                 <h2 class="fs-3 my-5 text-error">No se encontro el género buscado</h2>
                 <a href="index.php?sec=dashboard" class="btn btn-style py-2 px-5 fw-bold fs-5 my-5">Volver al Dashboard</a>

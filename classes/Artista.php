@@ -126,7 +126,11 @@ class Artista{
         //  print_r($artista);
         //  echo "</pre>";
 
-        return $artista ?? null;
+        if($artista){
+            return $artista;
+        }else{
+            return null;
+        }
     }
 
     /**
