@@ -75,7 +75,7 @@ class Genero{
      * @param int $idGenero El ID del genero
      * @return Genero Un objeto Genero o null
      */
-    public function get_x_id(int $idGenero):Genero{
+    public function get_x_id(int $idGenero): ?Genero{
         $conexion = conexion::getConexion();
         $query = "SELECT * FROM generos WHERE id = ?";
 
@@ -84,11 +84,16 @@ class Genero{
         $PDOStatement->execute([$idGenero]);
         $genero = $PDOStatement->fetch();
 
-        //  echo "<pre>";
-        //  print_r($artista);
-        //  echo "</pre>";
-
-        return $genero;
+        // echo "<pre>";
+        // print_r($genero);
+        // echo "</pre>";
+    
+        if($genero){
+            return $genero;
+        }else{
+            return null;
+        }
+        
     }
 
     /**

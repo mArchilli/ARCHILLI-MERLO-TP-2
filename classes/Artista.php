@@ -113,7 +113,7 @@ class Artista{
      * @param int $idArtista El ID del artista
      * @return Artista Un objeto Artista o null
      */
-    public function get_x_id(int $idArtista):Artista{
+    public function get_x_id(int $idArtista): ?Artista{
         $conexion = conexion::getConexion();
         $query = "SELECT * FROM artistas WHERE id = ?";
 
@@ -126,7 +126,7 @@ class Artista{
         //  print_r($artista);
         //  echo "</pre>";
 
-        return $artista;
+        return $artista ?? null;
     }
 
     /**
