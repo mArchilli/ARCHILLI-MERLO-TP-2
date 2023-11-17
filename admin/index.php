@@ -74,6 +74,10 @@ if (!array_key_exists($seccion, $secciones_validas)) {
 
 $userData = $_SESSION['loggedIn'] ?? FALSE;
 
+// echo "<pre>";
+// print_r($userData);
+// echo "</pre>";
+
 ?>
 
 <!DOCTYPE html>
@@ -136,7 +140,7 @@ $userData = $_SESSION['loggedIn'] ?? FALSE;
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active <?= $userData ? "" : "d-none" ?>" href="actions/auth_logout.php">Log Out</a>
+                        <a class="nav-link active <?= $userData ? "" : "d-none" ?>" href="actions/auth_logout.php">Logout: <span class="fw-light"><?= $userData['nombre_usuario'] ?? "" ?></span></a>
                     </li>
                 </ul>
             </div>

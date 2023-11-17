@@ -1,5 +1,10 @@
 <div class="container">
-    <h2 class="fs-1 my-3 fw-bold text-center">Agregar nuevo Genero</h2>
+    <div class="d-flex justify-content-between align-items-center">
+        <a href="index.php?sec=admin_genero" role="button" class="btn btn-md btn-danger mb-1">Volver</a>
+        <h2 class="fs-1 my-3 fw-bold text-center">Agregar nuevo Genero</h2>
+        <div></div>
+    </div>
+    
 
     <form class="my-3" action="actions/add_genero_acc.php" method="POST">
         <div class="mb-3">
