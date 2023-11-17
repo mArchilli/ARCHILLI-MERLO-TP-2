@@ -21,7 +21,7 @@ $artistas = (new Artista)->listado_artistas();
 
         <form class="my-3" action="actions/edit_disco_acc.php?id=<?= $disco->getId() ?>" method="POST" enctype="multipart/form-data">
 
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-12">
                 <div class="mb-3">
                     <label for="formTitulo" class="form-label">Titulo</label>
