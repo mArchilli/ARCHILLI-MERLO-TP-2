@@ -12,10 +12,12 @@ try {
         $datosPOST['nombre'],
     );
 
+    (new Alerta())->add_alerta('success', "Genero <strong>{$datosPOST['nombre']}</strong> agregado correctamente.");
     header('Location: ../index.php?sec=admin_genero');
 } catch (Exception $e) {
-    echo "<pre>";
-    print_r($e);
-    echo "</pre>";
-    die("No se pudo agregar el genero");
+    // echo "<pre>";
+    // print_r($e);
+    // echo "</pre>";
+    (new Alerta())->add_alerta('error', 'Ocurrio un error al momento de agregar el genero. Por favor intentelo nuevamente o ponga en contacto con el administrador del sistema.');
+    header('Location: ../index.php?sec=admin_genero');
 }

@@ -6,6 +6,10 @@ $listaDeArtistas = (new Artista())->listado_artistas();
 // print_r($listaDeDiscos);
 // echo "</pre>";
 
+// echo "<pre>";
+// print_r($_SESSION);
+// echo "</pre>";
+
 ?>
 
 
@@ -19,8 +23,11 @@ $listaDeArtistas = (new Artista())->listado_artistas();
             <a href="index.php?sec=dashboard" class="btn btn-style w-25 m-auto fw-bold my-3">Volver al dashboard</a>
             <a href="index.php?sec=add_artista" class="btn btn-style w-25 m-auto fw-bold my-3">Cargar nuevo artista</a>
         </div>
-        
 
+        <div>
+            <?= (new Alerta())->get_alertas(); ?>
+        </div>
+        
         <div class="col-12">
             <table class="table table-borderless table-hover">
                 <thead>
