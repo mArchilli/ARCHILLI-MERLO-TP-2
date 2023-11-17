@@ -14,26 +14,11 @@ class Autenticacion{
         //Crea el objeto usuario con el username
         $datosUsuario = (new Usuario())->usuario_x_username($username);
 
-        // echo "<pre>";
-        // print_r("El username es:" . $username);
-        // echo "</pre>";
-
-        // echo "<pre>";
-        // echo "<p> Los datos del usuario son:</p>";
-        // print_r($datosUsuario);
-        // echo "</pre>";
-
-        // echo "<pre>";
-        // print_r("La password es:" . $password);
-        // echo "</pre>";
-
         //Se fija si existe
         if($datosUsuario){
-            echo "<p>USERNAME ENCONTRADO</p>";
-            //En caso de existir verifica la password
+            //USERNAME ENCONTRADO verifica la password
             if(password_verify($password, $datosUsuario->getClave())){
-                //En caso de coincidir retorna TRUE
-                echo "<p>PASSWORD CORRECTA</p>";
+                //PASSWORD CORRECTA retorna TRUE
                 
                 $datosLogin['nombre_usuario'] = $datosUsuario->getNombre_usuario();
                 $datosLogin['nombre_completo'] = $datosUsuario->getNombre_completo();
@@ -43,13 +28,13 @@ class Autenticacion{
 
                 return TRUE;
             }else{
-                //En caso de NO coincidir retorna FALSE
-                echo "<p>PASSWORD INCORRECTA</p>";
+                //PASSWORD INCORRECTA retorna FALSE
+                (new Alerta())->add_alerta('warning', 'Contraseña incorrecta.');
                 return FALSE;
             }
         }else{
-            //En caso de no encontrar el Username retorna NULL
-            echo "<p>USERNAME NO ENCONTRADO</p>";
+            //USERNAME NO ENCONTRADO retorna NULL
+            (new Alerta())->add_alerta('warning', 'Usuario no encontrado.');
             return NULL;
         }
         

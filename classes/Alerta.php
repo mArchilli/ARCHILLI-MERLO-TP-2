@@ -22,8 +22,8 @@ class Alerta{
      * Obtiene todas las alertas
      */
     public function get_alertas(){
-        if(empty($_SESSION['alertas'])){
-            $alertasActuales = [];
+        if(!empty($_SESSION['alertas'])){
+            $alertasActuales = "";
             foreach($_SESSION['alertas'] as $alerta){
                 $alertasActuales .= $this->print_alerta($alerta);
             }
@@ -34,11 +34,14 @@ class Alerta{
         }
     }
 
+    /**
+     * Genera una alerta
+     * @return string $html devuelve el codigo de una alerta
+     */
     public function print_alerta(array $alerta): string{
-        $html = '';
-        $html .= "<div class='alert alert-{$alerta['tipo']} alert-dismissible fade show' role='alert'>";
+        $html = "<div class='alert alert-{$alerta['tipo']} alert-dismissible fade show' role='alert'>";
         $html .= $alerta['mensaje'];
-        $html .= "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>X</button>";
+        $html .= "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>";
         $html .= "</div>";
 
         return $html;
