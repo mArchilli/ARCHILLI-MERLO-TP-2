@@ -29,6 +29,6 @@ try {
     echo "<pre>";
     print_r($e);
     echo "</pre>";
-    (new Alerta())->add_alerta('error', 'Ocurrio un error al momento de agregar el artista. Por favor intentelo nuevamente o ponga en contacto con el administrador del sistema.');
+    (new Alerta())->add_alerta('error', 'Ocurrio un error al momento de agregar el artista. Por favor intentelo nuevamente o pongase en contacto con el administrador del sistema.');
     header('Location: ../index.php?sec=admin_artista');
 }

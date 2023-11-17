@@ -43,13 +43,15 @@ try {
         $imagen
     );
 
+    (new Alerta())->add_alerta('success', "Artista <strong>{$datosPOST['nombre']}</strong> editado correctamente.");
     header('Location: ../index.php?sec=admin_artista');
 
 } catch (Exception $e) {
-    echo "<pre>";
-    print_r($e);
-    echo "</pre>";
-    die("No se pudo editar correctamente el artista");
+    // echo "<pre>";
+    // print_r($e);
+    // echo "</pre>";
+    (new Alerta())->add_alerta('error', 'Ocurrio un error al momento de editar el artista. Por favor intentelo nuevamente o pongase en contacto con el administrador del sistema.');
+    header('Location: ../index.php?sec=admin_artista');
 
 }
 
