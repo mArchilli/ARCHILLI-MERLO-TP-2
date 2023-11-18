@@ -44,7 +44,7 @@ $disco = (new Disco())->catalogo_por_id($id);
 
                             <div class="card-body flex-grow-0 mt-auto">
                                 <div class="fs-3 mb-3 fw-bold text-style">$<?= $disco->precio_formateado();?></div>
-                                <form action="admin/actions/add_items_acc.php" method="get" class="row justify-content-center align-items-center">
+                                <form action="admin/actions/add_item_acc.php" method="get" class="row justify-content-center align-items-center">
                                     <div class="col-12 my-1">
                                         <label for="q" class="fw-bol me-2">Cantidad: </label>
                                     </div>

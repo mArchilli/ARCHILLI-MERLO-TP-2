@@ -21,5 +21,17 @@ Class Carrito{
             ];
         }
     }
+
+    /**
+     * Devuelve los items del carrito
+     * @return array $carrito Un array con los items del carrito
+     */
+    public function get_carrito(): array{
+        if(!empty($_SESSION['carrito'])){
+            return $_SESSION['carrito'];
+        }else{
+            return [];
+        }
+    }
     #endregion
 }
