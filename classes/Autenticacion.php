@@ -58,7 +58,7 @@ class Autenticacion{
         if(isset($_SESSION['loggedIn'])){
 
             if ($admin) {
-                if($_SESSION['loggenIn']['rol'] == "admin" OR $_SESSION['loggenIn']['rol'] == "superadmin"){
+                if($_SESSION['loggedIn']['rol'] == "admin" OR $_SESSION['loggenId']['rol'] == "superadmin"){
                     return TRUE;
                 } else {
                     (new Alerta())->add_alerta('warning', "El usuario no tiene los permisos necesarios para ingresar en este area.");
