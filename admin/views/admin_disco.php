@@ -3,6 +3,9 @@
 $listaDeDiscos = (new Disco())->catalogoCompleto();
 
 
+// echo "<pre>";
+// print_r($_SESSION);
+// echo "</pre>";
 ?>
 
 <div class="row d-flex justify-content-center align-items-center py-5 px-3">
