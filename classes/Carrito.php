@@ -3,6 +3,7 @@
 Class Carrito{
     
 
+    #region METODOS
     /**
      * Agrega un item al carrito 
      * @param int $discoID El ID del disco
@@ -12,7 +13,13 @@ Class Carrito{
         $itemData = (new Disco())->catalogo_por_id($discoID);
 
         if($itemData){
-            $_SESSION['carrito'][$discoID] = 23;
+            $_SESSION['carrito'][$discoID] = [
+                'titulo' => $itemData->getTitulo(),
+                'portada'=> $itemData->getPortada(),
+                'precio'=> $itemData->getPrecio(),
+                'cantidad'=> $cantidad,
+            ];
         }
     }
+    #endregion
 }

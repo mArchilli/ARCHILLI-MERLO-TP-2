@@ -43,8 +43,20 @@ $disco = (new Disco())->catalogo_por_id($id);
                             </ul>
 
                             <div class="card-body flex-grow-0 mt-auto">
-                                <div class="fs-3 mb-3 fw-bold text-center text-style">$<?= $disco->precio_formateado();?></div>
-                                <a href="#" class="btn btn-style w-100 fw-bold">COMPRAR</a>
+                                <div class="fs-3 mb-3 fw-bold text-style">$<?= $disco->precio_formateado();?></div>
+                                <form action="admin/actions/add_items_acc.php" method="get" class="row justify-content-center align-items-center">
+                                    <div class="col-12 my-1">
+                                        <label for="q" class="fw-bol me-2">Cantidad: </label>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                            <input type="number" class="form-control" value="1" min="1" max="99" name="q" name="q">
+                                    </div>
+
+                                    <div class="col-12 col-md-6">
+                                            <input type="submit" value="Agregar al carrito" class="btn btn-style w-100 fw-bold">
+                                            <input type="hidden" value="<?= $id ?>" name="id">
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
