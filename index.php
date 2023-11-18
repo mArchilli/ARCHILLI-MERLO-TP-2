@@ -137,6 +137,14 @@ if (!array_key_exists($seccion, $secciones_validas)) {
                     <li class="nav-item">
                         <a class="nav-link active" href="index.php?sec=envios">Envíos</a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="admin">Admin</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active p-2" href="index.php?sec=carrito" data-bs-toggle="tooltip" data-bs-placement="top" title="Carrito" >🛒</a>
+                    </li>
                 </ul>
             </div>
         </div>
