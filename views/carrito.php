@@ -68,16 +68,16 @@ $items = (new Carrito())->get_carrito();
                 
             </table>
 
-            <div class="d-flex justify-content-center gap-2 my-4">
+            <div class="d-flex justify-content-end gap-2 my-4">
                 <input type="submit" value="Actualizar cantidades" class="btn btn-warning">
-                <a href="index?php?sec=catalogo_completo" role="button" class="btn btn-danger">Seguir comprando</a>
+                <a href="index.php?sec=catalogo" role="button" class="btn btn-danger">Seguir comprando</a>
                 <a href="admin/actions/clear_items_acc.php" role="button" class="btn btn-danger">Vaciar carrito</a>
                 <a href="index?php?sec=finalizar_pago" role="button" class="btn btn-style">Finalizar compra</a>
             </div>
 
             </form>
             <?php } else { ?>
-                <div class="col-12">
+                <div class="col-12 my-5 py-5">
                     <h3 class="text-center my-4">El carrito se encuentra vacio</h3>
                     <a href="index.php?sec=catalogo" role="button" class="d-block btn btn-md btn-style mb-1">Ir al catalogo</a>
                 </div>

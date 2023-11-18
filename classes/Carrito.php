@@ -34,6 +34,15 @@ Class Carrito{
     }
 
     /**
+     * Vacia el carrito 
+     */
+    public function clear_items(){
+        
+        $_SESSION['carrito'] = [];
+        
+    }
+
+    /**
      * Devuelve los items del carrito
      * @return array $carrito Un array con los items del carrito
      */
