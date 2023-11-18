@@ -407,13 +407,14 @@ class Disco {
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute([$idDisco]);
-        $catalogo = $this->createDisco($PDOStatement->fetch());
+        $disco = $PDOStatement->fetch();
 
         // echo "<pre>";
         // print_r($catalogo);
         // echo "</pre>";
 
-        if($catalogo){
+        if($disco){
+            $catalogo = $this->createDisco($disco);
             return $catalogo;
         }else{
             return null;

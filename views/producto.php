@@ -2,14 +2,19 @@
 
 $id = $_GET['id'] ?? FALSE;
 
+// echo "<pre>";
+// print_r($id);
+// echo "</pre>";
+
 $disco = (new Disco())->catalogo_por_id($id);
+
 
 ?>
 
 <div class="container">
 
     <div class="row">
-        <?PHP if (!empty($disco)) { ?>
+        <?PHP if ($disco != null) { ?>
             <div class="col">
                 <div class="card m-5">
                     <div class="row g-0">
@@ -49,8 +54,8 @@ $disco = (new Disco())->catalogo_por_id($id);
             </div>
         <?PHP } else { ?>
             <div class="col my-md-5 text-center">
-                <h2 class="fs-1 my-5">No se encontró el producto buscado</h2>
-                <a href="index.php?sec=inicio" class="btn btn-style py-2 px-5 fw-bold fs-5 mb-5">VOLVER A INICIO</a>
+                <h2 class="fs-1 my-5">No se encontró el disco buscado</h2>
+                <a href="index.php?sec=inicio" class="btn btn-style py-2 px-5 fw-bold fs-5 mb-5">Volver al inicio</a>
             </div>
         <?PHP } ?>
     </div>

@@ -32,6 +32,9 @@ $secciones_validas = [
     ],
     "procesar_datos_post" => [
         "titulo" => "Datos formulario"
+    ],
+    "carrito" => [
+        "titulo" => "Carrito de compras"
     ]
 ];
 
