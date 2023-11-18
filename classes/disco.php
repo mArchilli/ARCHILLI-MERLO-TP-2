@@ -317,7 +317,7 @@ class Disco {
      * @param string $fechaPublicacion Un string con el año de publicacion
      * @return Disco[] Un array de objetos Disco 
      */
-    public function catalogo_por_epoca(string $epoca):array{
+    public function catalogo_por_epoca(string $epoca):?array{
 
         $conexion = conexion::getConexion();
 
@@ -325,15 +325,16 @@ class Disco {
         $where = '';
         switch ($epoca) {
             case '1980':
-                $where = 'publicacion >= 1980 AND publicacion <= 1989 ';
+                $where = 'publicacion >= 1980 AND publicacion <= 1989';
                 break;
             case '1990':
-                $where = 'publicacion >= 1990 AND publicacion <= 1999 ';
+                $where = 'publicacion >= 1990 AND publicacion <= 1999';
                 break;
             case '2000':
-                $where = 'publicacion >= 2000 AND publicacion <= 2009 ';
+                $where = 'publicacion >= 2000 AND publicacion <= 2009';
                 break;
             default:
+                $where = 'publicacion = 9999';
                 break;
         }
 
@@ -343,6 +344,7 @@ class Disco {
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute();
+        $catalogo = [];
 
         while ($disco = $PDOStatement->fetch()){
             $catalogo[] = $this->createDisco($disco);
@@ -351,7 +353,11 @@ class Disco {
         // print_r($catalogo);
         // echo "</pre>";
 
+        if($catalogo){
         return $catalogo;
+        }else{
+            return null;
+        }
     }
 
     /**
