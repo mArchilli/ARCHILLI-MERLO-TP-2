@@ -43,6 +43,20 @@ Class Carrito{
     }
 
     /**
+     * Actualiza las cantidades de los productos
+     * @param array $cantidades Array asociativo con las cantidades de cada producto con su id 
+     */
+    public function update_quantities(array $cantidades){
+        
+       foreach ($cantidades as $key => $value) {
+            if(isset($_SESSION['carrito'][$key])){
+                $_SESSION['carrito'][$key]['cantidad'] = $value;
+            }
+        }
+        
+    }
+
+    /**
      * Devuelve los items del carrito
      * @return array $carrito Un array con los items del carrito
      */
@@ -52,6 +66,20 @@ Class Carrito{
         }else{
             return [];
         }
+    }
+
+    /**
+     * Devuelve el precio total
+     * @return float $total Un flotante con el precio total
+     */
+    public function precio_total(): float{
+        $total = 0;
+        if(!empty($_SESSION['carrito'])){
+            foreach ($_SESSION['carrito'] as $item) {
+                $total += $item['precio'] * $item['cantidad'];
+            }
+        }
+        return $total;
     }
     #endregion
 }
