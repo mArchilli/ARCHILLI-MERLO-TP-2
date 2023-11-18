@@ -7,34 +7,56 @@ $generos = (new Genero())->listar_generosPrincipales();
 // Array asociativo de secciones validas
 $secciones_validas = [
     "inicio" => [
-        "titulo" => "Bienvenidos"
+        "titulo" => "Bienvenidos",
+        "restringido" => FALSE
     ], 
     "envios" => [
-        "titulo" => "Políticas de envío"
+        "titulo" => "Políticas de envío",
+        "restringido" => FALSE
     ],
     "nosotros" => [
-        "titulo" => "Sobre nosotros"
+        "titulo" => "Sobre nosotros",
+        "restringido" => FALSE
     ],
     "catalogo_x_epoca" => [
-        "titulo" => "catálogo por epoca"
+        "titulo" => "catálogo por epoca",
+        "restringido" => FALSE
     ],
     "producto" => [
-        "titulo" => "Detalle de producto"
+        "titulo" => "Detalle de producto",
+        "restringido" => FALSE
     ],
     "catalogo" => [
-        "titulo" => "catálogo completo"
+        "titulo" => "catálogo completo",
+        "restringido" => FALSE
     ],
     "catalogo_x_genero" => [
-        "titulo" => "catálogo por genero"
+        "titulo" => "catálogo por genero",
+        "restringido" => FALSE
     ],
     "contacto" => [
-        "titulo" => "Contacto"
+        "titulo" => "Contacto",
+        "restringido" => FALSE
     ],
     "procesar_datos_post" => [
-        "titulo" => "Datos formulario"
+        "titulo" => "Datos formulario",
+        "restringido" => FALSE
     ],
     "carrito" => [
-        "titulo" => "Carrito de compras"
+        "titulo" => "Carrito de compras",
+        "restringido" => FALSE
+    ],
+    "login" => [
+        "titulo" => "Inicio de sesion",
+        "restringido" => FALSE
+    ],
+    "panel_usuario" => [
+        "titulo" => "Panel de Usuario",
+        "restringido" => TRUE
+    ],
+    "finalizar_pago" => [
+        "titulo" => "Finaliza pago",
+        "restringido" => TRUE
     ]
 ];
 
@@ -98,12 +120,13 @@ if (!array_key_exists($seccion, $secciones_validas)) {
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="index.php?sec=inicio">Inicio</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.php?sec=catalogo">Catálogo</a>
-                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link active" href="index.php?sec=nosotros">Nosotros</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.php?sec=catalogo">Catálogo</a>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -131,11 +154,11 @@ if (!array_key_exists($seccion, $secciones_validas)) {
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.php?sec=contacto">Contacto</a>
+                        <a class="nav-link active" href="index.php?sec=envios">Envíos</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.php?sec=envios">Envíos</a>
+                        <a class="nav-link active" href="index.php?sec=contacto">Contacto</a>
                     </li>
 
                     <li class="nav-item">
