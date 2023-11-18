@@ -1,0 +1,1 @@
+<h2>Finalizar pago</h2>

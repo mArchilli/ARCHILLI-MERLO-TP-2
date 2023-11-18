@@ -74,7 +74,7 @@ $items = (new Carrito())->get_carrito();
                 <input type="submit" value="Actualizar cantidades" class="btn btn-warning">
                 <a href="index.php?sec=catalogo" role="button" class="btn btn-danger">Seguir comprando</a>
                 <a href="admin/actions/clear_items_acc.php" role="button" class="btn btn-danger">Vaciar carrito</a>
-                <a href="index?php?sec=finalizar_pago" role="button" class="btn btn-style">Finalizar compra</a>
+                <a href="index.php?sec=finalizar_pago" role="button" class="btn btn-style">Finalizar compra</a>
             </div>
 
             </form>

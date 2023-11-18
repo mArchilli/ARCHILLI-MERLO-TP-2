@@ -26,7 +26,7 @@ class Autenticacion{
                 $datosLogin['rol'] = $datosUsuario->getRol();
                 $_SESSION['loggedIn'] = $datosLogin;
 
-                return TRUE;
+                return $datosLogin['rol'];
             }else{
                 //PASSWORD INCORRECTA retorna FALSE
                 (new Alerta())->add_alerta('warning', 'Contraseña incorrecta.');

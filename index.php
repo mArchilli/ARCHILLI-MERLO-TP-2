@@ -71,6 +71,10 @@ if (!array_key_exists($seccion, $secciones_validas)) {
 } else {
     // Si existe
     $vista = $seccion;
+
+    if($secciones_validas[$seccion]['restringido']){
+        (new Autenticacion())->verify(FALSE);
+    }
     // Asigna a $titulo el valor de "titulo" dentro del array
     $titulo = $secciones_validas[$seccion]['titulo'];
 }
