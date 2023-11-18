@@ -54,9 +54,20 @@ class Autenticacion{
      * Verifica si exista una conexion
      * @return bool Devuelve TRUE en caso de existir sino ejecuta el header
      */
-    public function verify(): bool{
+    public function verify($admin = TRUE): bool{
         if(isset($_SESSION['loggedIn'])){
-            return TRUE;
+
+            if ($admin) {
+                if($_SESSION['loggenIn']['rol'] == "admin" OR $_SESSION['loggenIn']['rol'] == "superadmin"){
+                    return TRUE;
+                } else {
+                    (new Alerta())->add_alerta('warning', "El usuario no tiene los permisos necesarios para ingresar en este area.");
+                    header('Location: index.php?sec=login');
+                }
+                
+            } else {
+                return TRUE;
+            }
         } else {
             header('location: index.php?sec=login');
         }

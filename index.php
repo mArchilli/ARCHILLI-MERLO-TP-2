@@ -72,12 +72,18 @@ if (!array_key_exists($seccion, $secciones_validas)) {
     // Si existe
     $vista = $seccion;
 
-    if($secciones_validas[$seccion]['restringido']){
-        (new Autenticacion())->verify(FALSE);
+    if(!empty($_SESSION['loggedIn'])){
+        if($secciones_validas[$seccion]['restringido']){
+            (new Autenticacion())->verify(FALSE);
+        } 
     }
+
+    
     // Asigna a $titulo el valor de "titulo" dentro del array
     $titulo = $secciones_validas[$seccion]['titulo'];
 }
+
+$userData = $_SESSION['loggedIn'] ?? FALSE;
 
 ?>
 
@@ -166,11 +172,15 @@ if (!array_key_exists($seccion, $secciones_validas)) {
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="admin">Admin</a>
+                        <a class="nav-link active p-2" href="index.php?sec=carrito" data-bs-toggle="tooltip" data-bs-placement="top" title="Carrito" >🛒</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active p-2" href="index.php?sec=carrito" data-bs-toggle="tooltip" data-bs-placement="top" title="Carrito" >🛒</a>
+                        <a class="nav-link active <?= $userData ? "d-none" : "" ?>" href="index.php?sec=login">Log In</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active <?= $userData ? "" : "d-none" ?>" href="admin/actions/auth_logout.php">Logout: <span class="fw-light"><?= $userData['nombre_usuario'] ?? "" ?></span></a>
                     </li>
                 </ul>
             </div>
