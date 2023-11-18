@@ -45,13 +45,13 @@ $items = (new Carrito())->get_carrito();
                             </td>
                             <td>
                                 <label for="q_<?= $key ?>" class="h5 py-3 visually-hidden">Cantidad</label>
-                                <input type="number" class="form-control w-50 text-center" value="<?= $item['cantidad'] ?>" id="q[<?= $key ?>]" min="1" max="99">
+                                <input type="number" class="my-2 form-control w-50 text-center" value="<?= $item['cantidad'] ?>" id="q[<?= $key ?>]" min="1" max="99">
                             </td>
                             <td>
                                 <p class="h5 py-3">$<?= number_format($item['cantidad'] * $item['precio'], 2, "," ,".") ?></p>
                             </td>
                             <td>
-                                <a href="admin/actions/remove_item_acc.php?id=<?= $key ?>" role="button"><img src="img/vaciar.png" alt="Eliminar del carrito" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar del Carrito" class="img w-25"></a>
+                                <a href="admin/actions/remove_item_acc.php?id=<?= $key ?>" role="button" class=""><img src="img/vaciar.png" alt="Eliminar del carrito" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar del Carrito" class="my-2 img w-25"></a>
                             </td>
                         </tr>
                     <?php } ?>

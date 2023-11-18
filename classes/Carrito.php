@@ -23,6 +23,17 @@ Class Carrito{
     }
 
     /**
+     * Elimina un item del carrito 
+     * @param int $discoID El ID del disco
+     */
+    public function remove_item(int $discoID){
+
+        if(isset($_SESSION['carrito'][$discoID])){
+            unset($_SESSION['carrito'][$discoID]);
+        }
+    }
+
+    /**
      * Devuelve los items del carrito
      * @return array $carrito Un array con los items del carrito
      */
