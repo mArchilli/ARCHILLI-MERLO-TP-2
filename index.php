@@ -132,7 +132,7 @@ $userData = $_SESSION['loggedIn'] ?? FALSE;
 
             <div class="collapse navbar-collapse p-2" id="navbarSupportedContent">
 
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto ">
 
                     <li class="nav-item">
                         <a class="nav-link active" href="index.php?sec=nosotros">Nosotros</a>
@@ -147,7 +147,7 @@ $userData = $_SESSION['loggedIn'] ?? FALSE;
                     </li>
                 </ul>
 
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav ms-auto ">
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -185,16 +185,16 @@ $userData = $_SESSION['loggedIn'] ?? FALSE;
                         </ul>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item mb-2 mb-lg-0">
                         <form action="index.php?sec=catalogo_busqueda" method="post" class="d-flex" role="search">
                             <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" name='termino'>
                             <button class="btn btn-style" type="submit">Buscar</button>
                         </form>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item mb-2 mb-lg-0">
                         <a class="nav-link active py-0" href="index.php?sec=carrito" data-bs-toggle="tooltip" data-bs-placement="top" title="Carrito" >
-                        <button class="btn btn-style ">🛒</button>
+                        <button class="btn btn-style w-100">🛒</button>
                         </a>
                     </li>
 
@@ -202,9 +202,9 @@ $userData = $_SESSION['loggedIn'] ?? FALSE;
                         <a class="nav-link active <?= $userData ? "" : "d-none" ?>" href="admin/actions/auth_logout.php">Logout: <span class="fw-light"><?= $userData['nombre_usuario'] ?? "" ?></span></a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link active py-0" href="admin">
-                            <button class="btn btn-info">Admin</button>
+                    <li class="nav-item mb-2 mb-lg-0">
+                        <a class="nav-link active py-0 px-0" href="admin">
+                            <button class="btn btn-info w-100">Admin</button>
                         </a>
                     </li>
                     
