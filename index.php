@@ -18,10 +18,6 @@ $secciones_validas = [
         "titulo" => "Sobre nosotros",
         "restringido" => FALSE
     ],
-    "catalogo_x_epoca" => [
-        "titulo" => "catálogo por epoca",
-        "restringido" => FALSE
-    ],
     "producto" => [
         "titulo" => "Detalle de producto",
         "restringido" => FALSE
@@ -36,6 +32,14 @@ $secciones_validas = [
     ],
     "catalogo_x_genero" => [
         "titulo" => "catálogo por genero",
+        "restringido" => FALSE
+    ],
+    "catalogo_x_epoca" => [
+        "titulo" => "catálogo por epoca",
+        "restringido" => FALSE
+    ],
+    "catalogo_x_precio" => [
+        "titulo" => "catálogo por precio",
         "restringido" => FALSE
     ],
     "contacto" => [
@@ -162,6 +166,18 @@ $userData = $_SESSION['loggedIn'] ?? FALSE;
                             <?PHP foreach ($generos as $genero){?>
                             <li><a class="dropdown-item" href="index.php?sec=catalogo_x_genero&gen=<?=strtolower($genero['nombre'])?>"><?= $genero['nombre'] ?></a></li>
                             <?PHP }?>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Precio
+                        </a>
+
+                        <ul class="dropdown-menu nav-show">
+                            <li><a class="dropdown-item" href="index.php?sec=catalogo_x_precio&hasta=1700">Hasta $ 1.700</a></li>
+                            <li><a class="dropdown-item" href="index.php?sec=catalogo_x_precio&hasta=2000">Hasta $ 2.000</a></li>
+                            <li><a class="dropdown-item" href="index.php?sec=catalogo_x_precio&hasta=2500">Hasta $ 2.500</a></li>
                         </ul>
                     </li>
 
