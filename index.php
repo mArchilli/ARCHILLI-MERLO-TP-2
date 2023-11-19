@@ -132,18 +132,22 @@ $userData = $_SESSION['loggedIn'] ?? FALSE;
 
             <div class="collapse navbar-collapse p-2" id="navbarSupportedContent">
 
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php?sec=inicio">Inicio</a>
-                    </li>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                     <li class="nav-item">
                         <a class="nav-link active" href="index.php?sec=nosotros">Nosotros</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.php?sec=catalogo">Catálogo</a>
+                        <a class="nav-link active" href="index.php?sec=envios">Envíos</a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.php?sec=contacto">Contacto</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -182,15 +186,16 @@ $userData = $_SESSION['loggedIn'] ?? FALSE;
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.php?sec=envios">Envíos</a>
+                        <form action="index.php?sec=catalogo_busqueda" method="post" class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" name='termino'>
+                            <button class="btn btn-style" type="submit">Buscar</button>
+                        </form>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.php?sec=contacto">Contacto</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active p-2" href="index.php?sec=carrito" data-bs-toggle="tooltip" data-bs-placement="top" title="Carrito" >🛒</a>
+                        <a class="nav-link active py-0" href="index.php?sec=carrito" data-bs-toggle="tooltip" data-bs-placement="top" title="Carrito" >
+                        <button class="btn btn-style ">🛒</button>
+                        </a>
                     </li>
 
                     <li class="nav-item">
@@ -198,14 +203,9 @@ $userData = $_SESSION['loggedIn'] ?? FALSE;
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="admin">Admin</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <form action="index.php?sec=catalogo_busqueda" method="post" class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" name='termino'>
-                            <button class="btn btn-style" type="submit">Buscar</button>
-                        </form>
+                        <a class="nav-link active py-0" href="admin">
+                            <button class="btn btn-info">Admin</button>
+                        </a>
                     </li>
                     
                 </ul>
