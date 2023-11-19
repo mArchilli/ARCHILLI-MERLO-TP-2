@@ -30,6 +30,10 @@ $secciones_validas = [
         "titulo" => "catálogo completo",
         "restringido" => FALSE
     ],
+    "catalogo_busqueda" => [
+        "titulo" => "Catalogo de la busqueda",
+        "restringido" => FALSE
+    ],
     "catalogo_x_genero" => [
         "titulo" => "catálogo por genero",
         "restringido" => FALSE
@@ -180,6 +184,14 @@ $userData = $_SESSION['loggedIn'] ?? FALSE;
                     <li class="nav-item">
                         <a class="nav-link active" href="admin">Admin</a>
                     </li>
+                    
+                    <li class="nav-item">
+                        <form action="index.php?sec=catalogo_busqueda" method="post" class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" name='termino'>
+                            <button class="btn btn-style" type="submit">Buscar</button>
+                        </form>
+                    </li>
+                    
                 </ul>
             </div>
         </div>
