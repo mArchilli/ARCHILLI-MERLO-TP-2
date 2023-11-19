@@ -16,15 +16,19 @@ $disco = (new Disco())->catalogo_por_id($id);
     <div class="row">
         <?PHP if ($disco != null) { ?>
             <div class="col-12 ">
-                <div class="d-flex justify-content-between align-items-center my-3 mx-5">
+                <div class="d-flex justify-content-between align-items-center my-3">
                     <a href="index.php?sec=catalogo" role="button" class="btn btn-md btn-danger mb-1">Volver</a>
                     <div></div>
                     <div></div>
                 </div>
             </div>
 
+            <div>
+                <?= (new Alerta())->get_alertas(); ?>
+            </div>
+
             <div class="col-12">
-                <div class="card mx-5 mb-5">
+                <div class="card mb-5">
                     <div class="row g-0">
                         <div class="col-md-5 d-flex">
                             <img src="img/covers/<?= $disco->getPortada(); ?>" class="img-fluid rounded-start border-end" alt="Portada de <?= $disco->getTitulo();?>">
