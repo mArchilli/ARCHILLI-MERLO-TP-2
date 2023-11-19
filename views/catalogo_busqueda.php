@@ -57,9 +57,10 @@ $catalogo = (new Disco())->buscador($datosPOST['termino']);
                 </div>
             <!-- Si el catalogo está vacio -->
             <?PHP } else { ?>
-                <div class="row">
-                    <div class="col-12 text-danger text-center h1"> NO SE ENCONTRARON PRODUCTOS</div>
-                </div>
+                <div class="col my-md-5 text-center">
+                    <h2 class="fs-3 my-5 text-error">No se encontraron productos con el termino buscado</h2>
+                    <a href="index.php?sec=inicio" class="btn btn-style py-2 px-5 fw-bold fs-5 my-5">VOLVER A INICIO</a>
+                </div>  
             <?PHP }  ?>
         </div>
 

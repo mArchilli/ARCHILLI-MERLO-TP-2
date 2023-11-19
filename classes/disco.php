@@ -476,7 +476,8 @@ class Disco {
         while ($disco = $PDOStatement->fetch()){
             $catalogo[] = $this->createDisco($disco);
         }
-        return $catalogo;
+
+        return $catalogo ?? [];
     }
     
     /**
@@ -498,6 +499,7 @@ class Disco {
         while ($disco = $PDOStatement->fetch()){
             $catalogo[] = $this->createDisco($disco);
         }
+
         return $catalogo;
     }
 
