@@ -15,7 +15,7 @@ $catalogo = (new Disco())->catalogo_por_precio($precioSeleccionado);
 
 <div class=" d-flex justify-content-center py-5 px-3">
     <div>
-        <h2 class="text-center mb-5 fw-bold fs-1"> Catálogo  hasta $ <?= $precioSeleccionado ?> </h2>
+        <h2 class="text-center mb-5 fw-bold fs-1"> Catálogo  hasta $ <?= number_format($precioSeleccionado, 0, ",", ".") ?> </h2>
         <div class="container px-lg-5">
 
             <!-- Si el catálogo no esta vacío...-->
