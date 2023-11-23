@@ -149,6 +149,10 @@ $userData = $_SESSION['loggedIn'] ?? FALSE;
 
                 <ul class="navbar-nav ms-auto ">
 
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.php?sec=catalogo">Catalogo</a>
+                    </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Épocas
@@ -198,8 +202,10 @@ $userData = $_SESSION['loggedIn'] ?? FALSE;
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link active <?= $userData ? "" : "d-none" ?>" href="admin/actions/auth_logout.php">Logout: <span class="fw-light"><?= $userData['nombre_usuario'] ?? "" ?></span></a>
+                    <li class="nav-item mb-2 mb-lg-0">
+                        <a class="nav-link active py-0 <?= $userData ? "" : "d-none" ?>" href="admin/actions/auth_logout.php">
+                        <button class="btn btn-danger w-100">Logout: <span class="fw-light"><?= $userData['nombre_usuario'] ?? "" ?></span></button>
+                        </a>
                     </li>
 
                     <li class="nav-item mb-2 mb-lg-0">
