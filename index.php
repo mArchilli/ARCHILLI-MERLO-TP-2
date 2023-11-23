@@ -237,11 +237,11 @@ $userData = $_SESSION['loggedIn'] ?? FALSE;
                     <li class="list-group-item" >
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                            <button class="accordion-button collapsed d-flex flex-column" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <button class="accordion-button collapsed d-flex flex-column" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                 <li><span class="text-uppercase">Archilli Matias</span></li>
                             </button>
                             </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse m-3" data-bs-parent="#accordionExample">
+                            <div id="collapseThree" class="accordion-collapse collapse m-3" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <img src="img/perfil-archilli.png" class="img-fluid" alt="Alumno Archilli Matias">
                             </div>
@@ -257,9 +257,21 @@ $userData = $_SESSION['loggedIn'] ?? FALSE;
 
             <!--Grid column-->
             <div class="col-md-5 col-12 py-lg-2">
-                <ul class="list-group">
-                    <li class="list-group-item perfil"><span class="text-uppercase">Merlo Natalia</span></li>
-                    <li class="list-group-item"><img src="img/perfil-merlo.png" class="img-fluid" alt="Alumna Merlo Natalia"></li>
+            <ul class="list-group">
+                    <li class="list-group-item" >
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                            <button class="accordion-button collapsed d-flex flex-column" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <li><span class="text-uppercase">Merlo Natalia</span></li>
+                            </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse m-3" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <img src="img/perfil-merlo.png" class="img-fluid" alt="Alumna Natalia Merlo">
+                            </div>
+                            </div>
+                        </div>
+                    </li>
                     <li class="list-group-item">DNI: 38.892.597</li>
                     <li class="list-group-item">Correo: natalia.merlo@davinci.edu.ar</li>
                     <li class="list-group-item">Edad: 28 años</li>
