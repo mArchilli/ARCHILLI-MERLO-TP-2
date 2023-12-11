@@ -139,8 +139,10 @@ $userData = $_SESSION['loggedIn'] ?? FALSE;
                         <a class="nav-link active " href="../index.php">Volver a la tienda</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link active <?= $userData ? "" : "d-none" ?>" href="actions/auth_logout.php">Logout: <span class="fw-light"><?= $userData['nombre_usuario'] ?? "" ?></span></a>
+                    <li class="nav-item mb-2 mb-lg-0">
+                        <a class="nav-link active py-0 <?= $userData ? "" : "d-none" ?>" href="actions/auth_logout.php">
+                        <button class="btn btn-danger w-100">Logout: <span class="fw-light"><?= $userData['nombre_usuario'] ?? "" ?></span></button>
+                        </a>
                     </li>
                 </ul>
             </div>

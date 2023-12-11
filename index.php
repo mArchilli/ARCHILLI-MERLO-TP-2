@@ -203,14 +203,14 @@ $userData = $_SESSION['loggedIn'] ?? FALSE;
                     </li>
 
                     <li class="nav-item mb-2 mb-lg-0">
-                        <a class="nav-link active py-0 <?= $userData ? "" : "d-none" ?>" href="admin/actions/auth_logout.php">
-                        <button class="btn btn-danger w-100">Logout: <span class="fw-light"><?= $userData['nombre_usuario'] ?? "" ?></span></button>
+                        <a class="nav-link active py-0 px-0" href="admin">
+                            <button class="btn btn-info w-100">Admin</button>
                         </a>
                     </li>
 
                     <li class="nav-item mb-2 mb-lg-0">
-                        <a class="nav-link active py-0 px-0" href="admin">
-                            <button class="btn btn-info w-100">Admin</button>
+                        <a class="nav-link active py-0 <?= $userData ? "" : "d-none" ?>" href="admin/actions/auth_logout.php">
+                        <button class="btn btn-danger w-100">Logout: <span class="fw-light"><?= $userData['nombre_usuario'] ?? "" ?></span></button>
                         </a>
                     </li>
                     
