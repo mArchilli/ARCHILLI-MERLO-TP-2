@@ -117,7 +117,7 @@ $userData = $_SESSION['loggedIn'] ?? FALSE;
     <!-- estilos -->
     <link href="css/styles.css" rel="stylesheet">
 </head>
-<body>
+<body class="body-index">
 
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg nav-color px-2 py-3">

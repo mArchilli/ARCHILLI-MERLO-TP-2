@@ -104,7 +104,7 @@ $userData = $_SESSION['loggedIn'] ?? FALSE;
     <!-- estilos -->
     <link href="../css/styles.css" rel="stylesheet">
 </head>
-<body>
+<body class="body-admin">
 
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg nav-color px-2 py-3">
@@ -136,7 +136,9 @@ $userData = $_SESSION['loggedIn'] ?? FALSE;
                     </li> 
 
                     <li class="nav-item">
-                        <a class="nav-link active " href="../index.php">Volver a la tienda</a>
+                        <a class="nav-link active py-0" href="../index.php">
+                        <button class="btn btn-info w-100">Volver a la tienda</button>
+                        </a>
                     </li>
 
                     <li class="nav-item mb-2 mb-lg-0">
